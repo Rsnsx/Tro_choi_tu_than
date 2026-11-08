@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Những Ngã Rẽ Kinh Tế</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090e;--panel:#10151e;--panel-2:#151c27;--text:#edf1f6;--muted:#9aa5b4;
+  --red:#ef706d;--blue:#73c9dc;--gold:#d6b77f;--line:rgba(210,220,235,.12);
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --rd:var(--red);--bl:var(--blue);--tx:var(--text);--mu:var(--muted);--ln:var(--line);
+  color-scheme:dark;box-sizing:border-box
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg)}
+body{color:var(--text);font:16px/1.75 var(--sans);background:
+  radial-gradient(900px 520px at 12% -8%,rgba(115,201,220,.12),transparent 62%),
+  radial-gradient(760px 480px at 96% 5%,rgba(239,112,109,.10),transparent 58%),
+  linear-gradient(180deg,#090c13 0%,#07090e 58%,#080b11 100%);background-attachment:fixed}
+body::after{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.22;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
+body.mail-open{overflow:hidden}
+button,a{font:inherit}
+button{color:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#app{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:22px 26px 56px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 0 18px;margin-bottom:30px;border-bottom:1px solid var(--line)}
+h1{display:flex;align-items:center;gap:10px;margin:0;font:700 14px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
+h1::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--red);box-shadow:0 0 16px rgba(239,112,109,.7);transform:rotate(45deg)}
+h1 em{font-style:normal;color:var(--red)}
+#steps{display:flex;gap:6px;margin-left:auto}
+#steps i{min-width:32px;text-align:center;font:11px var(--mono);font-style:normal;color:#697586;border:1px solid var(--line);border-radius:7px;padding:5px 9px;transition:.35s}
+#steps i.on{color:var(--blue);border-color:rgba(115,201,220,.55);background:rgba(115,201,220,.08);box-shadow:0 0 16px rgba(115,201,220,.12)}
+#steps i.done{color:var(--gold);border-color:rgba(214,183,127,.55);background:rgba(214,183,127,.06)}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;border-radius:10px;padding:12px 18px;margin-top:12px;background:var(--blue);color:#071016;font:700 12px/1.3 var(--mono);letter-spacing:.045em;cursor:pointer;transition:transform .25s,background .25s,border-color .25s,box-shadow .25s;opacity:0;pointer-events:none}
+.cta.show{opacity:1;pointer-events:auto}
+.cta:hover{transform:translateY(-2px);background:#9bdeea;box-shadow:0 9px 26px rgba(115,201,220,.16)}
+.cta.secondary{background:rgba(255,255,255,.025);border-color:rgba(115,201,220,.38);color:var(--blue)}
+.cta.secondary:hover{background:rgba(115,201,220,.09)}
+.mail-trigger{margin:0;padding:9px 14px;border-color:rgba(214,183,127,.5);background:linear-gradient(180deg,rgba(214,183,127,.16),rgba(214,183,127,.06));color:var(--gold)}
+.mail-trigger:hover{background:rgba(214,183,127,.2)}
+.hide{display:none!important}
+#intro{position:relative;margin:4vh auto 0;padding:clamp(24px,4vw,48px);border:1px solid rgba(214,183,127,.22);border-radius:22px;overflow:hidden;background:
+  radial-gradient(500px 300px at 100% 0,rgba(115,201,220,.09),transparent 70%),
+  linear-gradient(135deg,rgba(24,31,44,.93),rgba(10,14,22,.94));box-shadow:0 24px 90px rgba(0,0,0,.35)}
+#intro::before,#intro::after{content:"";position:absolute;width:110px;height:110px;pointer-events:none;border-color:rgba(214,183,127,.32)}
+#intro::before{top:12px;right:12px;border-top:1px solid;border-right:1px solid;border-radius:0 12px 0 0}
+#intro::after{bottom:12px;left:12px;border-bottom:1px solid;border-left:1px solid;border-radius:0 0 0 12px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 14px;color:var(--gold);font:11px var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--gold)}
+#intro h2{max-width:800px;margin:0 0 16px;font-size:clamp(34px,6vw,62px);line-height:1.13;letter-spacing:-.045em;font-weight:700}
+#intro h2 em{color:var(--red);font-style:normal;text-shadow:0 0 32px rgba(239,112,109,.14)}
+#intro>p{max-width:780px;margin:0;color:#adb7c5;font-size:15px;line-height:1.9}
+#lives4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:30px 0 26px}
+.lc{position:relative;min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));transition:transform .3s,border-color .3s,box-shadow .3s}
+.lc:hover{transform:translateY(-4px);border-color:rgba(214,183,127,.48);box-shadow:0 13px 28px rgba(0,0,0,.25)}
+.lc .th{height:clamp(76px,10vw,112px);position:relative;overflow:hidden}
+.lc .th::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(8,11,17,.72))}
+.lc svg{width:100%;height:100%;display:block;filter:saturate(.82)}
+.lc .t{padding:12px 13px 14px}
+.lc small{display:block;margin-bottom:5px;color:var(--gold);font:10px var(--mono);letter-spacing:.1em}
+.lc b{display:block;font-size:13px;line-height:1.45}
+.mode-heading{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:25px 0 12px}
+.mode-heading h3{margin:0;font-size:16px}
+.mode-heading span{color:var(--muted);font:10px var(--mono);letter-spacing:.12em}
+.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mode-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:126px;padding:17px 19px;text-align:left;border:1px solid rgba(255,255,255,.11);border-radius:13px;background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));color:var(--text);cursor:pointer;transition:.3s}
+.mode-card:hover{transform:translateY(-3px);border-color:rgba(115,201,220,.48);background:linear-gradient(135deg,rgba(115,201,220,.10),rgba(255,255,255,.025));box-shadow:0 12px 26px rgba(0,0,0,.22)}
+.mode-card.featured{border-color:rgba(239,112,109,.36);background:linear-gradient(135deg,rgba(239,112,109,.11),rgba(255,255,255,.02))}
+.mode-card.featured:hover{border-color:rgba(239,112,109,.65)}
+.mode-card .mode-no{color:var(--gold);font:10px var(--mono);letter-spacing:.15em}
+.mode-card strong{margin:9px 26px 4px 0;font-size:16px;line-height:1.4}
+.mode-card small{color:var(--muted);font-size:12px}
+.mode-card .mode-arrow{position:absolute;right:17px;top:17px;color:var(--blue);font-size:19px;transition:transform .25s}
+.mode-card:hover .mode-arrow{transform:translate(3px,-3px)}
+.intro-hint{display:flex;flex-wrap:wrap;gap:14px;margin-top:19px;color:#8490a0;font:10px var(--mono);letter-spacing:.04em}
+.intro-hint span{display:inline-flex;align-items:center;gap:6px}
+.intro-hint b{color:var(--gold);font-weight:500}
+#game{animation:riseIn .55s ease both}
+@keyframes riseIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#scene{position:relative;height:clamp(150px,22vw,230px);margin-bottom:15px;border:1px solid rgba(214,183,127,.22);border-radius:17px;overflow:hidden;background:#10141c;box-shadow:0 18px 50px rgba(0,0,0,.36)}
+#scene svg{display:block;width:100%;height:100%;filter:saturate(.82)}
+#scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,14,.91) 0%,rgba(5,8,14,.42) 48%,rgba(5,8,14,.04) 100%),linear-gradient(0deg,rgba(5,8,14,.42),transparent 55%)}
+.sct{position:absolute;left:clamp(18px,3vw,30px);bottom:clamp(17px,3vw,25px);z-index:2;max-width:72%}
+.sct small{display:block;margin-bottom:7px;color:var(--gold);font:10px var(--mono);letter-spacing:.19em}
+.sct b{font-size:clamp(19px,3.3vw,30px);line-height:1.25;text-shadow:0 3px 18px rgba(0,0,0,.5)}
+.hud{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-bottom:15px}
+.st{position:relative;min-width:0;padding:13px 15px 12px;border:1px solid rgba(255,255,255,.085);border-radius:12px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 8px 24px rgba(0,0,0,.17)}
+.st small{display:block;max-width:75%;min-height:25px;color:var(--muted);font:10px/1.5 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+.st b{position:absolute;right:14px;top:11px;font:700 21px var(--mono)}
+.bar{height:6px;margin-top:9px;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.07)}
+.bar div{width:0;height:100%;border-radius:10px;transition:width .8s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px currentColor}
+#bm{background:var(--blue);color:var(--blue)}#bh{background:var(--red);color:var(--red)}#bc{background:#b2bdca;color:#b2bdca}#bg{background:linear-gradient(90deg,var(--gold),#fff0cb);color:var(--gold)}
+.d{position:absolute;right:13px;top:-3px;font:700 12px var(--mono);opacity:0}.d.go{animation:fl 1.8s forwards}
+@keyframes fl{0%{opacity:0;transform:translateY(8px)}15%{opacity:1}100%{opacity:0;transform:translateY(-18px)}}
+.grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(250px,1fr);grid-template-areas:"s i" "s v";gap:13px}
+.pn{min-width:0;padding:19px 21px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:linear-gradient(155deg,rgba(21,28,40,.92),rgba(12,16,24,.94));box-shadow:0 10px 30px rgba(0,0,0,.23)}
+.pn h3{display:flex;align-items:center;gap:9px;margin:0 0 12px;font:700 10px var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.pn h3::before{content:"";width:6px;height:6px;border-radius:2px;background:currentColor;box-shadow:0 0 10px currentColor;transform:rotate(45deg)}
+.pn p{margin:0;white-space:pre-line;min-height:3em}
+#story{grid-area:s;border-color:rgba(214,183,127,.19)}#story h3{color:var(--gold)}#story p{color:#f1f3f7;font-size:16px;line-height:1.9}
+#idp{grid-area:i}#idp h3{color:var(--blue)}#idp p{color:#c5cfdb;font-size:13px;line-height:1.8}
+#voice{grid-area:v}#voice h3{color:var(--red)}#voice p{padding-left:12px;border-left:2px solid rgba(239,112,109,.7);color:#d4dae3;font-size:14px;font-style:italic;line-height:1.85}
+#lesson{max-height:0;margin-top:12px;padding-top:0;padding-bottom:0;overflow:hidden;opacity:0;border-left:3px solid var(--blue);background:linear-gradient(100deg,rgba(115,201,220,.12),rgba(115,201,220,.025));transition:max-height .8s,opacity .7s,padding .5s}
+#lesson.show{max-height:440px;padding-top:16px;padding-bottom:16px;opacity:1}
+#lesson h3{color:var(--blue)}#lesson p{color:#dceef2;font-size:14px;line-height:1.85}
+.sw{animation:sw .65s cubic-bezier(.2,.8,.2,1)}
+@keyframes sw{from{opacity:0;transform:translateY(9px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+#timer-label{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:17px 1px 0;color:var(--muted);font:9px var(--mono);letter-spacing:.14em}
+.timer-readout{display:flex;align-items:baseline;gap:6px;color:var(--gold)}
+.timer-readout b{font:700 14px var(--mono);font-variant-numeric:tabular-nums}
+.timer-readout small{font:8px var(--mono);color:var(--muted)}
+.timer-readout i{margin-left:8px;color:var(--red);font:normal 8px var(--mono);letter-spacing:.08em}
+#tm{height:5px;margin-top:7px;overflow:hidden;border-radius:9px;background:rgba(255,255,255,.08)}
+#tm div{height:100%;width:100%;border-radius:9px;background:linear-gradient(90deg,var(--gold),var(--red));box-shadow:0 0 12px rgba(239,112,109,.38);transition:width .12s linear}
+#tm.urgent div{background:linear-gradient(90deg,#f59e0b,#ef4444);box-shadow:0 0 14px rgba(239,68,68,.55)}
+#choices{display:grid;gap:9px;margin-top:13px}
+#choices button{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px 16px;border:1px solid rgba(255,255,255,.10);border-radius:11px;background:rgba(255,255,255,.035);color:var(--text);text-align:left;font:500 14px/1.7 var(--sans);cursor:pointer;opacity:0;animation:sw .55s forwards;transition:transform .22s,border-color .22s,background .22s}
+#choices button b{flex:none;margin:2px 0 0;padding:3px 7px;border-radius:6px;background:rgba(239,112,109,.18);color:var(--red);font:700 11px var(--mono)}
+#choices button:hover:not(:disabled),#choices button:focus-visible{transform:translateX(4px);border-color:rgba(239,112,109,.62);background:rgba(239,112,109,.075);outline:none}
+#choices button:disabled{cursor:default}
+#choices button.dim{opacity:.32!important;transform:scale(.995)}
+#choices button.pick{border-color:rgba(115,201,220,.7);background:rgba(115,201,220,.10);opacity:1!important;box-shadow:inset 3px 0 0 var(--blue)}
+#choices button.pick b{background:var(--blue);color:#071016}
+#choices button.lk{opacity:.4!important;border-style:dashed;color:var(--muted)}
+#choices button.lk b{background:rgba(255,255,255,.1);color:var(--muted)}
+#nx{margin-top:15px;min-width:175px}
+#chain{margin-top:18px;background:rgba(255,255,255,.018)}#chain h3{color:var(--muted)}
+#ch{display:flex;flex-wrap:wrap;gap:7px;font-size:11px}
+#ch span{padding:4px 9px;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.025);font:10px var(--mono);animation:sw .5s}
+#ch .k0{border-color:rgba(239,112,109,.4)}#ch .k1{border-color:rgba(214,183,127,.4)}#ch .k2{border-color:rgba(115,201,220,.4)}#ch .k3{border-color:rgba(255,255,255,.25)}#ch em{color:var(--muted);font-style:normal}
+#ov{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px;background:rgba(4,6,10,.96);text-align:center;opacity:0;pointer-events:none;transition:opacity .65s}
+#ov.on{opacity:1;pointer-events:auto}
+#ot{margin:0 0 15px;font:700 clamp(25px,5vw,48px)/1.2 var(--mono);letter-spacing:.02em}
+#ov.d #ot{color:var(--red);animation:gl .25s steps(2) 6}#ov.t #ot{color:var(--blue)}
+@keyframes gl{0%{text-shadow:3px 0 var(--blue),-3px 0 var(--red);transform:translateX(2px)}100%{text-shadow:-3px 0 var(--blue),3px 0 var(--red);transform:translateX(-2px)}}
+#od{max-width:690px;max-height:62vh;overflow:auto;margin:0 0 14px;color:#cbd3dd;text-align:left;white-space:pre-line;font:15px/1.9 var(--sans)}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+#om{background:rgba(214,183,127,.09);border-color:rgba(214,183,127,.55);color:var(--gold)}#om:hover{background:rgba(214,183,127,.18)}
+#ob{min-width:190px}
+/* Post-run mailbox: an archive dossier that borrows the framed, ornamental feel of RPG menus. */
+#mb{position:fixed;inset:0;z-index:110;display:grid;place-items:center;padding:24px;background:rgba(3,5,9,.98);backdrop-filter:blur(16px);overflow:auto;opacity:0;pointer-events:none;transition:opacity .35s}
+#mb.on{opacity:1;pointer-events:auto}
+.mail-window{position:relative;display:grid;grid-template-rows:auto minmax(0,1fr);width:min(1120px,100%);height:min(900px,calc(100vh - 48px));max-height:calc(100vh - 48px);overflow:hidden;border:1px solid rgba(214,183,127,.48);border-radius:18px;background:#0c111a;box-shadow:0 30px 100px rgba(0,0,0,.65),0 0 0 5px rgba(214,183,127,.045),inset 0 0 0 1px rgba(255,255,255,.035)}
+.mail-window::before,.mail-window::after{content:"";position:absolute;z-index:3;width:34px;height:34px;pointer-events:none;border-color:rgba(214,183,127,.7)}
+.mail-window::before{top:9px;left:9px;border-top:1px solid;border-left:1px solid;border-radius:7px 0 0}
+.mail-window::after{right:9px;bottom:9px;border-right:1px solid;border-bottom:1px solid;border-radius:0 0 7px}
+.mail-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;border-bottom:1px solid rgba(214,183,127,.22);background:linear-gradient(90deg,rgba(214,183,127,.11),rgba(18,25,36,.8) 36%,rgba(115,201,220,.045))}
+.mail-brand{display:flex;align-items:center;gap:13px;min-width:0}
+.mail-brand-mark{display:grid;place-items:center;flex:none;width:39px;height:39px;border:1px solid rgba(214,183,127,.5);border-radius:10px;background:linear-gradient(145deg,rgba(214,183,127,.2),rgba(214,183,127,.035));color:var(--gold);font-size:19px;box-shadow:inset 0 0 16px rgba(214,183,127,.08)}
+.mail-brand small{display:block;margin-bottom:3px;color:var(--gold);font:9px var(--mono);letter-spacing:.19em}
+.mail-brand h2{margin:0;color:#f1eee6;font-size:clamp(17px,2.4vw,22px);line-height:1.3}
+.mail-close{flex:none;width:38px;height:38px;border:1px solid rgba(255,255,255,.13);border-radius:10px;background:rgba(255,255,255,.04);color:#d9e0e9;font-size:22px;line-height:1;cursor:pointer;transition:.2s}
+.mail-close:hover{border-color:rgba(239,112,109,.5);background:rgba(239,112,109,.1);color:var(--red)}
+.mail-body{display:grid;grid-template-columns:minmax(225px,.72fr) minmax(0,1.75fr);min-height:0;overflow:hidden}
+.mail-rail{position:relative;display:flex;flex-direction:column;gap:14px;padding:23px 21px;overflow:auto;border-right:1px solid rgba(214,183,127,.17);background:radial-gradient(360px 240px at 0 0,rgba(214,183,127,.10),transparent 72%),linear-gradient(180deg,#131a25,#0d121b)}
+.mail-rail::after{content:"";position:absolute;right:18px;top:18px;width:34px;height:34px;border-top:1px solid rgba(214,183,127,.28);border-right:1px solid rgba(214,183,127,.28);pointer-events:none}
+.mail-rail-kicker{color:var(--gold);font:9px var(--mono);letter-spacing:.16em}
+.mail-rail h3{margin:0;color:#f0e9dc;font-size:18px;line-height:1.5}
+.mail-rail p{margin:0;color:#aeb8c6;font-size:12px;line-height:1.85}
+.mail-run-card{margin-top:6px;padding:13px;border:1px solid rgba(214,183,127,.22);border-radius:11px;background:rgba(0,0,0,.15)}
+.mail-run-card small{display:block;color:var(--muted);font:9px var(--mono);letter-spacing:.14em}
+.mail-run-card strong{display:block;margin:6px 0;color:var(--gold);font-size:14px;line-height:1.45}
+.mail-run-card span{color:#8491a0;font-size:10px}
+.mail-seal{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);color:#8995a4;font:9px var(--mono);letter-spacing:.12em}
+.mail-seal b{display:grid;place-items:center;width:27px;height:27px;border:1px solid rgba(239,112,109,.5);border-radius:50%;color:var(--red);font-size:13px}
+.mail-main{min-width:0;padding:25px 27px 30px;overflow:auto;scrollbar-color:rgba(214,183,127,.35) transparent;scrollbar-width:thin}
+.mail-kicker{color:var(--blue);font:9px var(--mono);letter-spacing:.18em}
+.mail-main h3.section-title{margin:5px 0 7px;color:#f2f4f6;font-size:22px;line-height:1.35}
+.mail-intro{max-width:760px;margin:0 0 19px;color:#aeb8c6;font-size:13px;line-height:1.85}
+.mail-subhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 10px}
+.mail-subhead h4{margin:0;color:#e4e9ef;font-size:13px}
+.mail-subhead span{color:var(--muted);font:9px var(--mono);letter-spacing:.1em}
+.mail-life-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mail-life-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:rgba(255,255,255,.025)}
+.mail-life-item i{display:grid;place-items:center;flex:none;width:25px;height:25px;border-radius:7px;background:rgba(214,183,127,.1);color:var(--gold);font:10px var(--mono);font-style:normal}
+.mail-life-item b{display:block;font-size:11px;line-height:1.45}
+.mail-life-item small{display:block;margin-top:2px;color:var(--muted);font:8px var(--mono);letter-spacing:.1em}
+.trace-list{display:flex;flex-wrap:wrap;gap:7px}
+.trace-list span,.trace-list em{padding:5px 9px;border:1px solid rgba(115,201,220,.24);border-radius:7px;background:rgba(115,201,220,.055);color:#b9dce4;font:10px/1.5 var(--sans)}
+.trace-list em{border-style:dashed;color:var(--muted);font-style:normal}
+.practice-panel{margin-top:24px;padding:19px;border:1px solid rgba(115,201,220,.25);border-radius:14px;background:linear-gradient(145deg,rgba(115,201,220,.07),rgba(14,20,29,.75) 48%,rgba(239,112,109,.035))}
+.practice-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:7px}
+.practice-head small{display:block;margin-bottom:4px;color:var(--blue);font:9px var(--mono);letter-spacing:.16em}
+.practice-head h3{margin:0;color:#f3f5f8;font-size:19px;line-height:1.35}
+.practice-count{flex:none;padding:6px 9px;border:1px solid rgba(214,183,127,.3);border-radius:7px;color:var(--gold);font:9px var(--mono);letter-spacing:.08em}
+.practice-desc{margin:0 0 13px;color:#9eacbc;font-size:11px;line-height:1.7}
+.quiz-progress-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;color:#8c99a9;font:9px var(--mono)}
+.quiz-progress{height:4px;margin-bottom:16px;overflow:hidden;border-radius:8px;background:rgba(255,255,255,.08)}
+.quiz-progress span{display:block;width:0;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .25s}
+.quiz-q{padding:14px 0;border-top:1px solid rgba(255,255,255,.08)}
+.quiz-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;color:var(--gold);font:9px var(--mono);letter-spacing:.08em}
+.quiz-q h4{margin:0 0 10px;color:#e8edf3;font-size:13px;line-height:1.65;font-weight:600}
+.quiz-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.quiz-option{display:flex;align-items:flex-start;gap:8px;width:100%;padding:9px 10px;border:1px solid rgba(255,255,255,.09);border-radius:8px;background:rgba(255,255,255,.025);color:#bdc8d5;text-align:left;font:11px/1.6 var(--sans);cursor:pointer;transition:.2s}
+.quiz-option:hover:not(:disabled){border-color:rgba(115,201,220,.45);background:rgba(115,201,220,.07)}
+.quiz-option .opt-key{display:grid;place-items:center;flex:none;width:19px;height:19px;border-radius:5px;background:rgba(255,255,255,.08);color:#aeb8c5;font:9px var(--mono)}
+.quiz-option.selected{border-color:rgba(115,201,220,.65);background:rgba(115,201,220,.10);color:#e7f5f7}
+.quiz-option.selected .opt-key{background:var(--blue);color:#071016}
+.quiz-option.is-correct{border-color:rgba(116,190,143,.55);background:rgba(116,190,143,.08)}
+.quiz-option.is-correct .opt-key{background:#80c79c;color:#07140c}
+.quiz-option.is-wrong{border-color:rgba(239,112,109,.6);background:rgba(239,112,109,.08)}
+.quiz-option.is-wrong .opt-key{background:var(--red);color:#170707}
+.quiz-option:disabled{cursor:default;opacity:1}
+.quiz-feedback{min-height:0;margin:8px 0 0;color:#a9c4cd;font-size:10px;line-height:1.65}
+.quiz-feedback:empty{display:none}
+.quiz-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:13px;border-top:1px solid rgba(255,255,255,.08)}
+.quiz-actions .cta{margin:0;padding:9px 13px;font-size:10px}
+.quiz-actions .cta:disabled{opacity:.35;pointer-events:none;transform:none;box-shadow:none}
+#quiz-result{flex:1;min-width:130px;color:var(--gold);font:10px var(--mono)}
+.forms-panel{margin-top:20px;padding:17px;border:1px solid rgba(214,183,127,.23);border-radius:13px;background:linear-gradient(145deg,rgba(214,183,127,.055),rgba(12,17,25,.82) 58%,rgba(115,201,220,.035))}
+.forms-panel-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
+.forms-panel-head small{display:block;margin-bottom:4px;color:var(--gold);font:9px var(--mono);letter-spacing:.14em}
+.forms-panel-head h4{margin:0;color:#eee9de;font-size:15px}
+.forms-panel-head span{color:var(--muted);font:9px var(--mono);letter-spacing:.08em}
+.forms-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.form-link-card{position:relative;display:flex;min-height:91px;flex-direction:column;justify-content:space-between;gap:12px;padding:12px;border:1px solid rgba(255,255,255,.09);border-radius:10px;background:rgba(255,255,255,.025);color:inherit;text-decoration:none;transition:border-color .2s,background .2s,transform .2s}
+.form-link-card:hover,.form-link-card:focus-visible{border-color:rgba(214,183,127,.55);background:rgba(214,183,127,.075);transform:translateY(-2px);outline:none}
+.form-link-card:focus-visible{box-shadow:0 0 0 2px rgba(214,183,127,.2)}
+.form-link-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.form-link-no{color:var(--gold);font:9px var(--mono);letter-spacing:.11em}
+.form-link-icon{display:grid;place-items:center;width:23px;height:23px;border:1px solid rgba(214,183,127,.26);border-radius:7px;color:var(--gold);font-size:12px}
+.form-link-card b{color:#e5eaf0;font-size:11px;line-height:1.4;font-weight:600}
+.form-link-card small{color:#8f9cac;font:8px var(--mono);letter-spacing:.07em}
+.forms-note{margin:11px 0 0;color:#8491a1;font-size:9px;line-height:1.65}
+#mail-study{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:11px}
+.study-chip{padding:10px;border:1px solid rgba(255,255,255,.07);border-radius:9px;background:rgba(255,255,255,.02)}
+.study-chip small{display:block;color:var(--gold);font:8px var(--mono);letter-spacing:.1em}
+.study-chip b{display:block;margin:4px 0 2px;color:#dfe5ec;font-size:11px}
+.study-chip p{margin:0;color:#8f9cac;font-size:9px;line-height:1.6}
+@media(max-width:900px){#app{padding-left:18px;padding-right:18px}.grid{grid-template-columns:minmax(0,1.5fr) minmax(220px,1fr)}.mail-body{grid-template-columns:220px minmax(0,1fr)}.mail-main{padding:21px}}
+@media(max-width:700px){
+  #app{padding:14px 13px 35px}header{gap:10px;flex-wrap:wrap;margin-bottom:18px}h1{font-size:11px}#steps{order:3;width:100%;margin:0}#steps i{flex:1}
+  #intro{margin-top:18px;padding:23px 18px;border-radius:16px}#intro h2{font-size:clamp(32px,10vw,47px)}#intro>p{font-size:13px}
+  #lives4{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:21px 0}.lc .t{padding:9px 10px}.lc b{font-size:12px}
+  .mode-heading{align-items:flex-start;flex-direction:column;gap:4px}.mode-grid{grid-template-columns:1fr}.mode-card{min-height:104px;padding:14px 15px}.mode-card strong{margin-top:6px;font-size:14px}
+  .hud{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.st{padding:11px 12px}.st b{right:12px;font-size:19px}.grid{grid-template-columns:1fr;grid-template-areas:"s" "i" "v";gap:9px}.pn{padding:16px}.pn p{min-height:0}#story p{font-size:14px}
+  #mb{padding:9px}.mail-window{height:calc(100vh - 18px);max-height:calc(100vh - 18px);border-radius:13px}.mail-topbar{padding:13px 15px}.mail-brand-mark{width:34px;height:34px}.mail-body{grid-template-columns:1fr;overflow:auto}.mail-rail{display:grid;grid-template-columns:1fr;gap:8px;padding:14px 16px;border-right:0;border-bottom:1px solid rgba(214,183,127,.17)}.mail-rail h3{font-size:15px}.mail-rail p{font-size:11px}.mail-run-card{margin-top:0}.mail-seal{margin-top:0;padding-top:8px}.mail-main{padding:17px 15px 24px;overflow:visible}.mail-life-list,.quiz-options,#mail-study{grid-template-columns:1fr}.mail-main h3.section-title{font-size:20px}.practice-panel{padding:14px}.practice-head h3{font-size:17px}.forms-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.forms-panel{padding:14px}.forms-panel-head{align-items:flex-start;flex-direction:column;gap:4px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Character portraits and illustrated decision cards */
+#idp{padding:0 0 17px;overflow:hidden}
+#idp>h3{padding:18px 20px 12px;margin:0}
+.character-portrait{position:relative;height:clamp(150px,18vw,196px);margin:0 14px 13px;overflow:hidden;border:1px solid rgba(214,183,127,.24);border-radius:11px;background:#101722;isolation:isolate}
+.character-portrait::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(7,10,16,.78),transparent 48%),linear-gradient(90deg,rgba(7,10,16,.22),transparent 45%,rgba(7,10,16,.16))}
+.character-portrait svg{display:block;width:100%;height:100%;object-fit:cover}
+.character-portrait .portrait-light{animation:portraitPulse 4.5s ease-in-out infinite;transform-origin:center}
+.character-portrait .portrait-dust{animation:dustDrift 6s ease-in-out infinite alternate}
+#idt{padding:0 18px 2px;margin:0;color:#c5cfdb;font-size:12px;line-height:1.8;white-space:pre-line}
+.choice-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:17px 0 8px}
+.choice-heading small{display:block;margin-bottom:3px;color:var(--gold);font:9px var(--mono);letter-spacing:.18em}
+.choice-heading strong{display:block;color:#e8edf3;font-size:15px}
+.choice-heading>span{color:#8995a4;font:9px var(--mono);letter-spacing:.08em}
+#choices{display:grid;gap:10px;margin-top:0}
+#choices button{position:relative;display:grid;grid-template-columns:148px minmax(0,1fr) 25px;align-items:center;gap:15px;min-height:108px;padding:10px 14px 10px 10px;overflow:hidden;border:1px solid rgba(255,255,255,.105);border-radius:13px;background:linear-gradient(105deg,rgba(255,255,255,.045),rgba(255,255,255,.018) 72%);text-align:left;opacity:0;animation:choiceEnter .5s cubic-bezier(.2,.8,.2,1) forwards;transition:transform .25s,border-color .25s,background .25s,box-shadow .25s}
+#choices button::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(105deg,transparent 15%,rgba(255,255,255,.07) 48%,transparent 76%);transform:translateX(-80%);transition:opacity .2s}
+#choices button:hover:not(:disabled){transform:translateX(5px);border-color:rgba(214,183,127,.48);background:linear-gradient(105deg,rgba(214,183,127,.075),rgba(255,255,255,.025) 72%);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+#choices button:hover:not(:disabled)::before{opacity:1;animation:cardShine .8s ease}
+#choices .choice-visual{position:relative;display:block;width:100%;height:84px;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:9px;background:#111a27;isolation:isolate}
+#choices .choice-visual::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(0deg,rgba(4,7,12,.5),transparent 68%);box-shadow:inset 0 0 22px rgba(0,0,0,.22)}
+#choices .choice-visual svg{display:block;width:100%;height:100%;transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .35s;filter:saturate(.82)}
+#choices button:hover:not(:disabled) .choice-visual svg{transform:scale(1.08);filter:saturate(1.12) brightness(1.08)}
+#choices .choice-visual .art-float{transform-box:fill-box;transform-origin:center;animation:artFloat 3.6s ease-in-out infinite}
+#choices .choice-visual .art-spark{animation:artBlink 2.4s ease-in-out infinite}
+#choices .choice-copy{position:relative;z-index:1;display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:5px}
+#choices .choice-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#choices .choice-number{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:22px;margin:0;padding:0 6px;border-radius:6px;background:rgba(239,112,109,.16);color:var(--red);font:700 10px var(--mono)}
+#choices .choice-tag{color:var(--gold);font:8px var(--mono);letter-spacing:.13em}
+#choices .choice-title{display:block;color:#e9eef5;font-size:13px;line-height:1.65;font-weight:600}
+#choices .choice-lock{color:#8d99a8;font-size:10px;line-height:1.5}
+#choices .choice-hint{color:#7d8a99;font:8px var(--mono);letter-spacing:.08em;opacity:.9}
+#choices .choice-arrow{position:relative;z-index:1;align-self:center;color:#8796a6;font-size:19px;transition:transform .25s,color .25s}
+#choices button:hover:not(:disabled) .choice-arrow{transform:translate(3px,-2px);color:var(--gold)}
+#choices button.pick{border-color:rgba(115,201,220,.75);background:linear-gradient(100deg,rgba(115,201,220,.13),rgba(115,201,220,.035));box-shadow:inset 3px 0 0 var(--blue),0 0 22px rgba(115,201,220,.08);opacity:1!important}
+#choices button.pick .choice-number{background:var(--blue);color:#071016}
+#choices button.pick .choice-visual{border-color:rgba(115,201,220,.62);box-shadow:0 0 18px rgba(115,201,220,.18)}
+#choices button.pick .choice-visual svg{animation:choiceImpact .7s ease}
+#choices button.pick .choice-arrow{color:var(--blue)}
+#choices button.dim{opacity:.3!important;filter:saturate(.55)}
+#choices button.lk{border-style:dashed;background:rgba(255,255,255,.018)}
+#choices button.lk .choice-visual{filter:grayscale(.65);opacity:.66}
+#choices button.lk .choice-tag{color:#798595}
+#choices button:disabled{cursor:default}
+#choices button.pick:disabled{cursor:default}
+#choices button.pick::after{content:"ĐÃ CHỌN";position:absolute;right:45px;top:8px;z-index:2;color:var(--blue);font:8px var(--mono);letter-spacing:.15em;animation:badgeIn .35s ease both}
+#lives4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.lc .th{height:clamp(112px,14vw,156px)}
+.lc .th svg{transition:transform .5s,filter .35s}
+.lc:hover .th svg{transform:scale(1.045);filter:saturate(1.08)}
+@keyframes choiceEnter{from{opacity:0;transform:translateY(13px) scale(.99);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+@keyframes artFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes artBlink{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes cardShine{0%{transform:translateX(-80%)}100%{transform:translateX(80%)}}
+@keyframes choiceImpact{0%{transform:scale(1)}35%{transform:scale(1.09);filter:brightness(1.45)}100%{transform:scale(1);filter:brightness(1.05)}}
+@keyframes badgeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@keyframes portraitPulse{0%,100%{opacity:.45}50%{opacity:.9}}
+@keyframes dustDrift{from{transform:translate(0,0)}to{transform:translate(8px,-5px)}}
+@media(max-width:700px){
+  #idp{padding-bottom:14px}#idp>h3{padding:15px 16px 10px}.character-portrait{height:170px;margin:0 12px 11px}#idt{padding:0 15px;font-size:11px}
+  .choice-heading{align-items:flex-start;flex-direction:column;gap:4px}.choice-heading>span{font-size:8px}
+  #choices button{grid-template-columns:102px minmax(0,1fr) 16px;gap:10px;min-height:94px;padding:8px 9px 8px 8px}
+  #choices .choice-visual{height:76px}.choice-title{font-size:12px!important;line-height:1.55!important}#choices .choice-lock{font-size:9px}
+  #choices button.pick::after{right:28px;top:5px;font-size:7px}
+  #lives4{grid-template-columns:repeat(2,minmax(0,1fr))}.lc .th{height:clamp(105px,31vw,150px)}
+}
+@media(max-width:380px){#choices button{grid-template-columns:88px minmax(0,1fr) 13px;gap:8px}#choices .choice-visual{height:70px}#choices .choice-title{font-size:11px!important}}
+
+
+.story-cast{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 12px}
+.story-cast:empty{display:none}
+.story-cast-item{display:flex;align-items:center;gap:7px;max-width:210px;padding:5px 8px 5px 5px;border:1px solid rgba(214,183,127,.18);border-radius:9px;background:rgba(255,255,255,.025);animation:castIn .38s ease both}
+.story-cast-avatar{display:block;flex:none;width:34px;height:34px;overflow:hidden;border:1px solid rgba(214,183,127,.3);border-radius:50%;background:#121a25}
+.story-cast-avatar svg{display:block;width:100%;height:100%;transform:scale(1.5);transform-origin:50% 42%}
+.story-cast-item b{display:block;color:#dfe7ef;font-size:9px;line-height:1.35}
+.story-cast-item small{display:block;max-width:145px;margin-top:2px;overflow:hidden;color:#8493a3;font:7px var(--mono);letter-spacing:.04em;text-overflow:ellipsis;white-space:nowrap}
+.character-portrait.portrait-refresh svg{animation:portraitReveal .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes castIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes portraitReveal{from{opacity:.25;transform:scale(1.035);filter:blur(2px)}to{opacity:1;transform:none;filter:none}}
+@media(max-width:700px){.story-cast-item{max-width:180px}.story-cast-item small{max-width:115px}}
+
+
+/* Supplied Randy Marsh portrait: contained inside a matching character frame. */
+.character-portrait{display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(ellipse at 50% 28%,rgba(115,201,220,.14),transparent 54%),linear-gradient(145deg,#1c2630,#0e141d 72%)}
+.character-portrait .randy-marsh-image{display:block;flex:none;width:auto;height:84%;max-width:42%;margin:0 auto;object-fit:contain;object-position:center bottom;border:1px solid rgba(214,183,127,.35);border-bottom:0;border-radius:9px 9px 0 0;box-shadow:0 0 24px rgba(0,0,0,.42);filter:saturate(.96) contrast(1.02)}
+.lc .th{display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(ellipse at 50% 25%,rgba(115,201,220,.12),transparent 58%),linear-gradient(145deg,#1c2630,#0e141d 72%)}
+.lc .th .randy-marsh-image{display:block;flex:none;width:auto;height:84%;max-width:66%;margin:0 auto;object-fit:contain;object-position:center bottom;border:1px solid rgba(214,183,127,.32);border-bottom:0;border-radius:8px 8px 0 0;box-shadow:0 0 20px rgba(0,0,0,.4);filter:saturate(.92)}
+.story-cast-avatar .randy-marsh-image{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 24%}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <h1>NHỮNG NGÃ RẼ <em>KINH TẾ</em></h1>
+  <div id="steps"><i>I</i><i>II</i><i>III</i><i>IV</i></div>
+  <button class="cta show hide mail-trigger" id="mbtn" type="button">✉ Hộp thư</button>
+</header>
+
+<section id="intro">
+  <div class="eyebrow">TRÒ CHƠI TƯƠNG TÁC · KINH TẾ CHÍNH TRỊ MÁC – LÊNIN</div>
+  <h2>Một nền kinh tế.<br>Nhiều <em>ngã rẽ</em>.</h2>
+  <p>Bước vào những vị thế khác nhau trong cùng một nền kinh tế: người lao động, người sở hữu tư bản, người hoạch định chính sách và người làm việc trong ngành công nghệ. Hãy quan sát mỗi lựa chọn tạo ra hệ quả gì, và những quan hệ kinh tế nào đang định hình số phận của từng nhân vật.</p>
+  <div id="lives4"></div>
+  <div class="mode-heading"><h3>Chọn hồ sơ trải nghiệm</h3><span>SELECT YOUR SCENARIO · 2–4 KIẾP</span></div>
+  <div class="mode-grid">
+    <button class="mode-card featured" id="go3" type="button"><span class="mode-no">01 / ĐỐI LẬP</span><strong>Thợ lò &amp; Chủ xưởng</strong><small>Cùng xưởng, hai vị thế · khoảng 6 phút</small><span class="mode-arrow">↗</span></button>
+    <button class="mode-card" id="go5" type="button"><span class="mode-no">02 / CHÍNH TRỊ</span><strong>Công nhân &amp; Quan chức 2008</strong><small>Khủng hoảng tài chính · khoảng 6 phút</small><span class="mode-arrow">↗</span></button>
+    <button class="mode-card" id="go2" type="button"><span class="mode-no">03 / CÔNG NGHỆ</span><strong>Nhân viên &amp; Chủ công ty AI</strong><small>Lao động trong kỷ nguyên dữ liệu · khoảng 6 phút</small><span class="mode-arrow">↗</span></button>
+    <button class="mode-card" id="go4" type="button"><span class="mode-no">04 / TOÀN CẢNH</span><strong>Bản đầy đủ · 4 kiếp</strong><small>Nhìn lại toàn bộ chuỗi quan hệ · khoảng 12 phút</small><span class="mode-arrow">↗</span></button>
+  </div>
+  <div class="intro-hint"><span><b>1–3</b> CHỌN QUYẾT ĐỊNH</span><span><b>ENTER</b> ĐI TIẾP</span><span><b>ESC</b> ĐÓNG HỘP THƯ</span><span>THỜI GIAN CHƠI ĐƯỢC HIỂN THỊ THEO TỪNG HỒ SƠ</span></div>
+</section>
+
+<main id="game" class="hide">
+<div id="scene"></div><div class="hud">
+<div class="st"><small>Tiền tài</small><b id="vm"></b><span class="d" id="dm"></span><div class="bar"><div id="bm"></div></div></div>
+<div class="st"><small>Sức khỏe</small><b id="vh"></b><span class="d" id="dh"></span><div class="bar"><div id="bh"></div></div></div>
+<div class="st"><small>Tín nhiệm</small><b id="vc"></b><span class="d" id="dc"></span><div class="bar"><div id="bc"></div></div></div>
+<div class="st"><small>Giác ngộ (mang sang kiếp sau)</small><b id="vg"></b><span class="d" id="dg"></span><div class="bar"><div id="bg"></div></div></div>
+</div>
+<div class="grid">
+<aside class="pn" id="idp"><h3>Nhân vật của bạn</h3><div class="character-portrait" id="character-portrait" aria-label="Chân dung nhân vật"></div><p id="idt"></p></aside>
+<section class="pn" id="story"><h3 id="stt">Cốt truyện</h3><div id="story-cast" class="story-cast" aria-label="Nhân vật xuất hiện trong tình huống"></div><p id="stx"></p></section>
+<aside class="pn" id="voice"><h3>Tiếng lòng</h3><p id="vtx"></p></aside>
+</div>
+<section class="pn" id="lesson"><h3>Đúc kết Mác – Lênin</h3><p id="lsx"></p></section>
+<div id="timer-label">
+  <span>THỜI GIAN ĐƯA RA QUYẾT ĐỊNH</span>
+  <span class="timer-readout"><b id="timer-countdown">60</b><small>GIÂY</small><i id="timer-state" aria-live="polite">CÒN LẠI</i></span>
+</div>
+<div id="tm" role="progressbar" aria-label="Thời gian còn lại để đưa ra quyết định" aria-valuemin="0" aria-valuemax="60" aria-valuenow="60"><div></div></div>
+<div class="choice-heading"><div><small>YOUR NEXT MOVE</small><strong>Bạn sẽ lựa chọn như thế nào?</strong></div><span>NHẤN 1–3 ĐỂ CHỌN</span></div>
+<div id="choices" aria-label="Các phương án lựa chọn"></div>
+<button class="cta" id="nx" type="button">Tiếp tục</button>
+<section class="pn" id="chain"><h3>Chuỗi nhân quả</h3><div id="ch"></div></section>
+</main>
+</div>
+
+<div id="mb" role="dialog" aria-modal="true" aria-labelledby="mail-heading" aria-hidden="true">
+  <div class="mail-window">
+    <div class="mail-topbar">
+      <div class="mail-brand">
+        <div class="mail-brand-mark" aria-hidden="true">✉</div>
+        <div><small>POST-RUN ARCHIVE / MESSAGE 001</small><h2 id="mail-heading">Hộp thư ký ức</h2></div>
+      </div>
+      <button class="mail-close" id="mx" type="button" aria-label="Đóng hộp thư">×</button>
+    </div>
+    <div class="mail-body">
+      <aside class="mail-rail">
+        <div class="mail-rail-kicker">FROM // NGƯỜI ĐIỀU PHỐI</div>
+        <h3>Gửi người vừa bước ra khỏi vòng quay,</h3>
+        <p id="mail-rail-text">Bạn đã đi qua một hành trình với những lựa chọn không hề đơn giản. Hãy giữ lại điều mình hiểu được, không chỉ kết quả mình nhận được.</p>
+        <div class="mail-run-card"><small>HỒ SƠ VỪA HOÀN TẤT</small><strong id="mail-run-title">Chưa có dữ liệu lượt chơi</strong><span id="mail-run-meta">Hoàn thành một lượt chơi để lưu dấu vết.</span></div>
+        <div class="mail-seal"><b>✦</b><span>ARCHIVE SEALED · HUMAN STORIES / ECONOMIC SYSTEMS</span></div>
+      </aside>
+      <div class="mail-main">
+        <div class="mail-kicker">01 / THE AFTERIMAGE</div>
+        <h3 class="section-title">Những gì còn lại sau lựa chọn</h3>
+        <p class="mail-intro" id="mail-intro">Trò chơi không chỉ ghi nhận bạn sống sót hay gục ngã. Điều đáng nhìn lại là những quan hệ kinh tế – xã hội đứng phía sau mỗi quyết định.</p>
+
+        <div class="mail-subhead"><h4>Hành trình vừa hoàn tất</h4><span>YOUR LAST RUN</span></div>
+        <div class="mail-life-list" id="mail-lives"></div>
+        <div class="mail-subhead"><h4>Dấu vết bạn để lại</h4><span>CHOICES CARRIED FORWARD</span></div>
+        <div class="trace-list" id="mtr"><em>Bạn chưa có dấu vết trong lượt chơi này.</em></div>
+
+        <section class="practice-panel" aria-labelledby="practice-title">
+          <div class="practice-head">
+            <div><small>02 / KNOWLEDGE CHECK</small><h3 id="practice-title">Thử thách sau màn chơi</h3></div>
+            <span class="practice-count">05 CÂU · 03 PHÚT</span>
+          </div>
+          <p class="practice-desc">Các câu hỏi được biên soạn theo khái niệm và cách diễn đạt trong Giáo trình Kinh tế chính trị Mác – Lênin. Chọn đáp án, chấm bài để xem giải thích.</p>
+          <div class="quiz-progress-row"><span id="quiz-progress-label">0/5 câu đã trả lời</span><span>YOUR KNOWLEDGE TRACE</span></div>
+          <div class="quiz-progress"><span id="quiz-progress"></span></div>
+          <div id="quiz-list"></div>
+          <div class="quiz-actions">
+            <span id="quiz-result" aria-live="polite">Chưa chấm điểm</span>
+            <button class="cta show" id="quiz-submit" type="button" disabled>Chấm bài</button>
+            <button class="cta show secondary" id="quiz-reset" type="button">Làm lại</button>
+          </div>
+        </section>
+
+        <div class="mail-subhead"><h4>Đi xa hơn trong giáo trình</h4><span>CONTINUE LEARNING</span></div>
+        <div id="mail-study">
+          <div class="study-chip"><small>CHƯƠNG 3</small><b>Giá trị thặng dư</b><p>Sức lao động, ngày lao động, tích lũy và lợi nhuận.</p></div>
+          <div class="study-chip"><small>CHƯƠNG 4</small><b>Cạnh tranh và độc quyền</b><p>Sự hình thành độc quyền và độc quyền nhà nước.</p></div>
+          <div class="study-chip"><small>CHƯƠNG 5</small><b>Kinh tế thị trường định hướng XHCN</b><p>Quan hệ sở hữu, phân phối và lợi ích kinh tế.</p></div>
+          <div class="study-chip"><small>CHƯƠNG 6</small><b>Công nghiệp hóa, hiện đại hóa</b><p>Cách mạng công nghiệp lần thứ tư và hội nhập.</p></div>
+        </div>
+        <section class="forms-panel" aria-labelledby="forms-panel-title">
+          <div class="forms-panel-head">
+            <div><small>03 / EXTERNAL PRACTICE</small><h4 id="forms-panel-title">Sáu đề luyện tập bổ sung</h4></div>
+            <span>MICROSOFT FORMS · 06 BÀI</span>
+          </div>
+          <div class="forms-grid">
+          <a class="form-link-card" href="https://forms.cloud.microsoft/r/NEixkXLWzF?origin=lprLink" target="_blank" rel="noopener noreferrer" aria-label="Mở đề luyện tập 01 trên Microsoft Forms">
+            <span class="form-link-top"><span class="form-link-no">PRACTICE / 01</span><span class="form-link-icon" aria-hidden="true">↗</span></span>
+            <b>Đề luyện tập 01</b>
+            <small>MICROSOFT FORMS · MỞ ĐỀ</small>
+          </a>
+          <a class="form-link-card" href="https://forms.cloud.microsoft/r/myvGFxX1Rx?origin=lprLink" target="_blank" rel="noopener noreferrer" aria-label="Mở đề luyện tập 02 trên Microsoft Forms">
+            <span class="form-link-top"><span class="form-link-no">PRACTICE / 02</span><span class="form-link-icon" aria-hidden="true">↗</span></span>
+            <b>Đề luyện tập 02</b>
+            <small>MICROSOFT FORMS · MỞ ĐỀ</small>
+          </a>
+          <a class="form-link-card" href="https://forms.cloud.microsoft/r/PkgCiW4rWg?origin=lprLink" target="_blank" rel="noopener noreferrer" aria-label="Mở đề luyện tập 03 trên Microsoft Forms">
+            <span class="form-link-top"><span class="form-link-no">PRACTICE / 03</span><span class="form-link-icon" aria-hidden="true">↗</span></span>
+            <b>Đề luyện tập 03</b>
+            <small>MICROSOFT FORMS · MỞ ĐỀ</small>
+          </a>
+          <a class="form-link-card" href="https://forms.cloud.microsoft/r/GULXep7XbE?origin=lprLink" target="_blank" rel="noopener noreferrer" aria-label="Mở đề luyện tập 04 trên Microsoft Forms">
+            <span class="form-link-top"><span class="form-link-no">PRACTICE / 04</span><span class="form-link-icon" aria-hidden="true">↗</span></span>
+            <b>Đề luyện tập 04</b>
+            <small>MICROSOFT FORMS · MỞ ĐỀ</small>
+          </a>
+          <a class="form-link-card" href="https://forms.cloud.microsoft/r/strgaXpAdx?origin=lprLink" target="_blank" rel="noopener noreferrer" aria-label="Mở đề luyện tập 05 trên Microsoft Forms">
+            <span class="form-link-top"><span class="form-link-no">PRACTICE / 05</span><span class="form-link-icon" aria-hidden="true">↗</span></span>
+            <b>Đề luyện tập 05</b>
+            <small>MICROSOFT FORMS · MỞ ĐỀ</small>
+          </a>
+          <a class="form-link-card" href="https://forms.cloud.microsoft/r/P7AihaxaRs?origin=lprLink" target="_blank" rel="noopener noreferrer" aria-label="Mở đề luyện tập 06 trên Microsoft Forms">
+            <span class="form-link-top"><span class="form-link-no">PRACTICE / 06</span><span class="form-link-icon" aria-hidden="true">↗</span></span>
+            <b>Đề luyện tập 06</b>
+            <small>MICROSOFT FORMS · MỞ ĐỀ</small>
+          </a>
+          </div>
+          <p class="forms-note">Chọn một đề để mở biểu mẫu Microsoft Forms trong tab mới. Yêu cầu đăng nhập (nếu có) phụ thuộc vào cài đặt chia sẻ của từng biểu mẫu.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="ov"><h2 id="ot"></h2><p id="od"></p><div class="row"><button class="cta show hide" id="om">Mở hộp thư & luyện tập</button><button class="cta show" id="ob"></button></div></div>
+
+<script>
+const FL={complyai:"Huấn luyện mô hình thay mình",logdata:"Ghi lại nguồn dữ liệu",organize:"Lập công đoàn nhỏ",sign:"Ký thỏa thuận im lặng",leakin:"Công khai với báo chí",suit:"Kiện tập thể",surveil:"Xây hệ thống giám sát",retool:"Tự học lại",coopjoin:"Vào hợp tác xã dữ liệu",payup:"Cắn răng trả nợ",debt:"Vay thêm giữ nhà",docs:"Gửi hồ sơ vay",rally:"Xuống đường",accept:"Chấp nhận tịch biên",vulture:"Bán nhà cho quỹ đầu cơ",testify:"Làm chứng",settle:"Hòa giải im lặng",mutual:"Quỹ nhà ở hợp tác",extend:"Kéo dài ngày làm",machine:"Mua máy mới",concede:"Nhượng bộ giờ làm",blame:"Đổ lỗi nạn nhân",safety:"Sửa an toàn",recognize:"Công nhận hội nghề",lobby:"Vận động chống luật",support10:"Ủng hộ luật 10 giờ",openbooks:"Công khai sổ lương",obey:"Cúi đầu",strike:"Bãi công",betray:"Mách chủ",quiet:"Im lặng",union:"Lập hội nghề",press:"Tố cáo báo chí",trust:"Lập trust",compete:"Giữ cạnh tranh",labor:"Đàm phán Ellen",export:"Xuất khẩu vốn",bet:"Đầu cơ",pay:"Chia lợi nhuận",bail:"Cứu trợ vô điều kiện",reform:"Cứu trợ có điều kiện",letgo:"Để sụp",bonus:"Duyệt thưởng",expose:"Công bố bản kê",law:"Luật chống độc quyền",accel:"Tăng tốc AI",share:"Chia năng suất",audit:"Nhật ký kiểm toán",nda:"Ký NDA",leak:"Công bố số liệu",coop:"Hợp tác xã dữ liệu"};
+const L=[
+{n:"Thợ lò thế kỷ XIX",s:[20,80,50],mx:200,id:"Tom Hale, 24 tuổi.\nThợ lò xưởng gang Ashworth, Manchester, 1847.\nChủ đề: tích lũy nguyên thủy, giá trị thặng dư.",rule:"Mỗi giờ làm thêm đổi một đồng xu và lấy đi một phần phổi.",
+nodes:[
+{s:"Còi xưởng hú lúc 5 giờ sáng. Chủ xưởng Ashworth dán thông báo: ngày làm tăng lên 16 giờ, tiền công giữ nguyên, máy mới đặt cạnh lò. Ngoài cổng, hàng trăm người thất nghiệp chờ thế chỗ. Mary Doyle, thợ dệt, thì thầm: “Nếu cả xưởng cùng dừng tay, ông ta không thay nổi ngần ấy người.”",v:"Mẹ ốm, tiền thuốc còn thiếu. Mary đang chìa tay ra, nhưng nếu thất bại thì cả hai ta cùng đói. Mình dám đứng lên hay dám đói?",
+c:[{t:"Cắm đầu làm, nhận thêm ca đêm lấy tiền thuốc cho mẹ",f:[40,-35,-5,-5],k:"obey",e:1,l:"Kéo dài ngày lao động là phương pháp sản xuất giá trị thặng dư tuyệt đối (Chương 3). Công nhân tự rút ngắn đời mình, còn đội quân thất nghiệp ngoài cổng giữ tiền công ở mức thấp."},
+{t:"Cùng Mary tổ chức bãi công đòi ngày làm 10 giờ",f:[-10,-10,30,15],k:"strike",e:1,l:"Lợi ích tư bản và lao động đối kháng nhau (Chương 3, 5). Khi công nhân hành động tập thể thì từ phản kháng lẻ tẻ họ chuyển sang đấu tranh giai cấp."},
+{t:"Mách quản đốc tên những người đòi bãi công để lấy tiền thưởng",f:[30,0,-30,-10],k:"betray",e:1,l:"Cạnh tranh giữa người làm thuê chính là điều tư bản cần: nó làm yếu sức mạnh của lao động và giữ giá sức lao động thấp."}]},
+{s:"Ca đêm: lò nổ, một đồng nghiệp chết. Ashworth đưa một shilling “bồi thường” và đặt mua máy hơi nước thay ba thợ lò. Quản đốc gọi bạn vào phòng.",ec:{obey:"Phổi bạn đã rít từ tháng trước vì những ca đêm.",strike:"Mary nhớ bạn đã dám dừng lò. Cô mang theo một danh sách chữ ký.",betray:"Những người bị bạn mách nhìn bạn, không nói một lời."},v:"Mình đã cho ông ta mười năm xương máu, đổi lại là một đồng bạc. Nhưng nếu lên tiếng, ai còn dám thuê mình nữa?",
+c:[{t:"Nhận shilling, lặng lẽ rời xưởng",f:[5,-100,-10,-5],k:"quiet",e:"d",o:"Bạn ho ra máu trong một căn hầm ẩm ở Angel Meadow. Không ai ghi tên bạn. Chiếc lò vẫn cháy, đã có người đứng vào chỗ cũ.",l:"Tích lũy nguyên thủy tách người lao động khỏi tư liệu sản xuất. Máy móc làm cấu tạo hữu cơ tư bản tăng, công nhân bị thải thành nhân khẩu thừa tương đối."},
+{t:"Cùng Mary lập hội nghề, góp tiền cho gia đình người chết",f:[-5,-15,25,20],k:"union",e:2,l:"Lợi ích chung của người làm thuê chỉ được bảo vệ khi họ liên kết thành tổ chức. Từ giai cấp tự nó họ trở thành giai cấp vì nó (Chương 3, 5)."},
+{t:"Đưa sổ lương và bệnh án của cả xưởng cho báo Hiến chương",r:"strike",rh:"cần dư ảnh: bạn đã dám bãi công",f:[-5,-20,25,15],k:"press",e:2,l:"Công khai sự bóc lột làm tăng ý thức giai cấp, đồng thời đưa mâu thuẫn lợi ích ra trước công luận và nhà nước."}]},
+{s:"Hội nghề đã có tên, nhưng cảnh sát sắp lục soát. Quốc hội đang tranh luận về đạo luật 10 giờ. Bạn còn một đêm.",ec:{union:"Sổ hội nằm trong lòng bạn. Mary nói: “Ta không còn là những cá nhân nữa.”",press:"Bài báo đã đến tay các nghị sĩ."},v:"Cứu mình hay cứu cả hội? Và liệu có ai nhớ đến cái tên Tom Hale?",
+c:[{t:"Ở lại canh sổ hội, đối mặt cảnh sát",f:[0,-60,20,15],e:"t",o:"Bạn bị bắt, sổ hội qua tay Mary, nhiều năm sau đạo luật 10 giờ ra đời. Tên bạn không ghi trong luật, nhưng ngày làm ngắn lại. Hồn bạn trôi về phía thế kỷ sau.",l:"Đạo luật 10 giờ là kết quả áp lực lâu dài của đấu tranh có tổ chức, không phải lòng nhân từ của giới chủ."},
+{t:"Trốn sang Mỹ với 20 shilling",f:[10,-20,-15,0],e:"t",o:"Bạn lên tàu. Ở New York bạn lại làm thuê trong một xưởng khác, và thấy lò gang cũng đỏ lửa y như ở quê. Bạn ngã bệnh trong mùa đông rồi trôi sang kiếp sau.",l:"Chủ nghĩa tư bản mở rộng sang không gian mới và mang theo quan hệ làm thuê. Chạy trốn cá nhân không đổi được quan hệ sản xuất."}]}]},
+{n:"Chủ ngân hàng đầu thế kỷ XX",s:[500,70,60],mx:1200,gm:"Chào mừng đến sàn giao dịch. Ở đây ai nắm vốn sẽ nắm luật.",id:"J. H. Whitmore, 52 tuổi.\nChủ ngân hàng đầu tư, Phố Wall, 1910. Cổ đông thừa kế vốn dòng Ashworth.\nChủ đề: độc quyền, tư bản tài chính.",rule:"Bàn càng cao, sàn xưởng càng xa. Đừng nhìn xuống.",
+nodes:[
+{s:"Hai tập đoàn thép cạnh tranh sống mái, cả hai nợ ngân hàng của bạn. Hợp nhất, bạn sẽ ngồi ghế hội đồng quản trị và quyết định giá thép cả nước. Ellen Doyle, thư ký công đoàn thép, xin gặp bạn.",ec:{union:"Doyle: dòng họ ấy từng đứng đầu hội nghề Manchester. Hàng nghìn thợ thép nghe bà.",obey:"Công nhân thép lúc này cũng im lặng như bạn từng im lặng.",strike:"Tên Doyle gợi bạn nhớ một cuộc bãi công cũ, như một ký ức không phải của mình."},v:"Cạnh tranh là tín điều của cha ông, nhưng một con số duy nhất trên bảng giá nghe quá quyến rũ. Ai sẽ trả giá?",
+c:[{t:"Ép hai tập đoàn sáp nhập thành trust thép, bạn vào hội đồng",f:[400,-10,-20,-5],k:"trust",e:1,l:"Cạnh tranh dẫn đến tích tụ và tập trung tư bản, tập trung đến mức nhất định thì sinh ra độc quyền. Ngân hàng hợp nhất với công nghiệp thành tư bản tài chính (Chương 4, Lênin)."},
+{t:"Giữ cạnh tranh, cho vay vừa phải",f:[60,0,10,5],k:"compete",e:1,l:"Một nhà tư bản giữ đạo đức cũng không thoát được quy luật cạnh tranh: đối thủ sẽ thôn tính nếu bạn không làm trước."},
+{t:"Gặp Ellen Doyle, hứa tăng lương đổi lấy hòa bình lao động",f:[-80,0,25,15],k:"labor",e:1,l:"Nhượng bộ tiền lương chỉ chia lại một phần giá trị thặng dư. Nó làm dịu mâu thuẫn nhưng không xóa quan hệ bóc lột (Chương 3)."}]},
+{s:"Vốn trong nước dư thừa, lợi suất giảm. Các nhà đầu tư thúc giục xuất vốn sang thuộc địa, nơi đường sắt, mỏ và nhân công rẻ đã sẵn. Chứng khoán New York đang sốt cao.",ec:{trust:"Trust thép của bạn lớn đến mức định giá đường ray của nửa châu lục.",labor:"Ellen cảnh báo: vốn đi theo cờ, và cờ sẽ kéo lính đi theo.",compete:"Đối thủ nhỏ đang bị nuốt dần quanh bạn."},v:"Tiền không biết biên giới, nhưng cờ thì có. Bao nhiêu hạm đội sẽ phải ra khơi để bảo vệ khoản vay này?",
+c:[{t:"Xuất khẩu tư bản sang thuộc địa, lợi suất gấp ba",f:[500,-10,-25,-5],k:"export",e:2,l:"Xuất khẩu tư bản trở nên phổ biến, các liên minh độc quyền chia nhau thị trường thế giới (Chương 4, Lênin)."},
+{t:"Vay đòn bẩy, đầu cơ chứng khoán cho nóng",f:[300,-60,-10,-5],k:"bet",e:"d",o:"Tháng Mười 1929, chỉ số sụp đổ. Bạn gục xuống giữa phòng giao dịch, tay vẫn nắm tờ băng ghi giá cổ phiếu hóa giấy.",l:"Tư bản giả (cổ phiếu, trái phiếu) phình ra tách khỏi sản xuất thực, rồi khủng hoảng thừa bùng nổ."},
+{t:"Đầu tư vào xưởng trong nước, chia một phần lợi nhuận cho công nhân",r:"labor",rh:"cần dư ảnh: bạn đã đàm phán với Ellen Doyle",f:[100,-5,20,15],k:"pay",e:2,l:"Tăng năng suất, tăng thu nhập công nhân mở rộng thị trường trong nước. Nhưng nó vẫn nằm trong khuôn khổ chiếm hữu tư nhân."}]},
+{s:"Chiến tranh nổ ở châu Âu. Chính phủ đặt thép số lượng lớn, đơn hàng quân sự lớn nhất lịch sử công ty. Lợi nhuận kỷ lục, nhưng mỗi tấn thép sẽ thành một viên đạn.",ec:{export:"Các cảng bạn đầu tư giờ là căn cứ hải quân của chính các cường quốc đang đánh nhau.",pay:"Công nhân của bạn cũng bị gọi nhập ngũ."},v:"Mình nuôi ngàn gia đình bằng thép. Mình cũng nuôi chiến tranh bằng thép. Hai điều đều đúng.",
+c:[{t:"Nhận đơn hàng chiến tranh",f:[600,-10,-30,-5],e:"t",o:"Tài sản bạn nở gấp bốn. Bạn không còn thấy gương mặt nào ngoài biểu đồ. Đến lúc bạn nhận ra, hồn bạn đã bước qua dòng thời gian mới.",l:"Cạnh tranh phân chia thị trường thế giới giữa các cường quốc tư bản độc quyền dẫn đến chiến tranh đế quốc (Chương 4)."},
+{t:"Từ chối đơn hàng, công khai giá thép",f:[-200,-20,20,15],e:"t",o:"Bạn bị loại khỏi hội đồng, tài sản giảm mạnh. Nhưng bảng giá bạn công bố bị các báo trích lại cả thập kỷ. Hồn bạn nhẹ đi trước khi trôi sang kiếp mới.",l:"Độc quyền áp giá cao và hạn chế sản lượng. Công khai thông tin làm lung lay thế độc quyền, nhưng chưa thay đổi quan hệ sở hữu."}]}]},
+{n:"Quan chức năm 2008",s:[300,75,70],mx:800,gm:"Màn thứ ba: quá lớn để sụp đổ. Ai sẽ trả giá khi trò chơi thất bại?",id:"Daniel Reyes, 45 tuổi.\nPhó thứ trưởng Tài chính, Washington, 2008.\nChủ đề: độc quyền nhà nước, cứu trợ.",rule:"Ai quá lớn thì không được phép sụp. Ai nhỏ thì sụp thay.",
+nodes:[
+{s:"Tháng 9/2008, Lehman Brothers phá sản. Tín dụng đóng băng. CEO Victor Whitmore III, hậu duệ dòng ngân hàng cũ, ngồi trong phòng họp xin 700 tỷ USD. Ngoài hành lang, nhà báo điều tra Nora Doyle đang chờ.",ec:{trust:"Dòng Whitmore từng lập trust thép năm 1910. Hôm nay họ dựng thành ngân hàng toàn cầu.",export:"Vốn Whitmore từng xuất khẩu sang thuộc địa, nay xuất khẩu qua sản phẩm phái sinh.",labor:"Nora là hậu duệ Ellen Doyle, và bà vẫn nhớ cuộc gặp năm 1910."},v:"Có nên đưa tiền người đóng thuế cho những kẻ đã thổi bong bóng? Nhưng nếu không cứu, cả nền kinh tế đổ theo.",
+c:[{t:"Ủng hộ gói cứu trợ 700 tỷ USD, không điều kiện",f:[150,-15,-30,-5],k:"bail",e:1,l:"Độc quyền nhà nước: nhà nước tư sản dùng ngân sách cho tập đoàn lớn, tư hữu hóa lợi nhuận và xã hội hóa tổn thất (Chương 4)."},
+{t:"Cứu trợ nhưng đòi cổ phần nhà nước, trần lương và giám sát",f:[50,-15,20,15],k:"reform",e:1,l:"Sở hữu nhà nước là công cụ điều tiết, nhưng nó chỉ đổi hướng khi bộ máy không bị tập đoàn chi phối về nhân sự (Chương 4)."},
+{t:"Phản đối, để thị trường tự thanh lọc",f:[-50,-20,20,0],k:"letgo",e:1,l:"Khủng hoảng là cách quy luật tự điều chỉnh mất cân đối. Nhưng cái giá rơi vào người mất việc, mất nhà, không phải giới chủ."}]},
+{s:"Hai năm sau, người dân biểu tình trước Phố Wall: ngân hàng đã được cứu, hàng triệu gia đình mất nhà. Ban lãnh đạo vẫn chia nhau tiền thưởng khổng lồ. Bản kê tiền thưởng nằm trong tay bạn.",ec:{rally:"Bạn nhớ tiếng loa trước Phố Wall và gương mặt những người đứng ngoài tòa nhà.",testify:"Lời chứng của một công nhân Ohio nằm trong chồng báo cáo trên bàn bạn.",settle:"Một thỏa thuận hòa giải kín nằm trên bàn, không ai biết người ký.",docs:"Hồ sơ vay của một công nhân Ohio được chuyển lên văn phòng bạn qua nhà báo Nora Doyle.",bail:"Gói cứu trợ không điều kiện đang nuôi chính những khoản thưởng này.",reform:"Cổ phần nhà nước cho bạn quyền xem sổ sách mà trước đây không ai được xem.",letgo:"Hàng triệu người dân đã mất nhà vì ngân hàng đóng cửa."},v:"Hồ sơ này có thể lật đổ cả dây chuyền lợi ích quanh mình, hoặc mình giữ im lặng và được nhớ như người đã giữ hệ thống không đổ.",
+c:[{t:"Duyệt thưởng, ra họp báo trấn an công chúng",f:[100,-5,-30,-10],k:"bonus",e:2,l:"Nhà nước tư sản đóng vai trò công cụ điều tiết để giữ ổn định cho chế độ, trì hoãn mâu thuẫn chứ không giải quyết nó."},
+{t:"Đưa hồ sơ cho Nora Doyle và nghiệp đoàn",r:"labor|rally|testify",rh:"cần dư ảnh: bạn từng đàm phán với Ellen Doyle, xuống đường hoặc làm chứng cùng Nora",f:[-40,-20,30,20],k:"expose",e:2,l:"Công khai thông tin cùng lực lượng xã hội tổ chức mạnh hơn hành động cá nhân. Đây là mối liên hệ lợi ích giữa nhà nước, tư bản và người lao động (Chương 5)."},
+{t:"Một mình công bố bản kê tại buổi điều trần",f:[-100,-45,35,20],k:"expose",e:"d",o:"Bạn bị đẩy ra khỏi bộ, kiệt sức sau mấy tháng điều trần. Một buổi sáng bạn ngã quỵ vì đột quỵ trên bậc thềm Quốc hội. Bản hồ sơ của bạn được hàng nghìn người sao chép.",l:"Quyền lực tập đoàn xâm nhập bộ máy nhà nước nên cải cách đơn độc rất khó. Nhưng ý thức công chúng được đánh thức."}]},
+{s:"Dư luận đòi cải cách. Bạn có thể ở lại thúc đẩy đạo luật kiểm soát độc quyền và bảo vệ dữ liệu, hoặc sang làm tư vấn cho Whitmore Tech, công ty mới của dòng họ cũ, đang xây thứ gọi là AI.",ec:{bonus:"Số tiền thưởng bạn duyệt đã trở thành vốn đầu tư đầu tiên của Whitmore Tech.",expose:"Hồ sơ của bạn trở thành tiền lệ cho luật bảo vệ người tố giác."},v:"Tư bản đang đổi hình dạng, từ thép sang tín dụng rồi sang dữ liệu. Mình theo hình dạng mới hay cố giữ nó trong luật?",
+c:[{t:"Sang làm tư vấn cho Whitmore Tech",f:[200,-5,-25,-10],e:"t",o:"Bạn thành triệu phú tư vấn. Một dây chuyền dữ liệu mới nối khắp thế giới. Hồn bạn sang kiếp cuối, nơi bánh răng biết suy nghĩ.",l:"Biểu hiện mới của độc quyền: tập đoàn công nghệ chi phối dữ liệu, một dạng tư liệu sản xuất mới (Chương 4, Chương 6)."},
+{t:"Dựng đạo luật kiểm soát độc quyền và bảo vệ dữ liệu",f:[-60,-25,30,20],k:"law",e:"t",o:"Đạo luật bị cắt xén qua nhiều vòng vận động hành lang, nhưng vẫn thông qua. Bạn kiệt sức nhưng nhìn thấy văn bản còn nguyên điều khoản chính. Hồn bạn trôi sang kiếp cuối.",l:"Điều tiết có giới hạn, bởi mâu thuẫn nằm ở quan hệ sở hữu chứ không chỉ ở luật. Nhưng nó mở ra khoảng thở cho lực lượng xã hội."}]}]},
+{n:"Chủ công ty AI hiện đại",s:[120,80,65],mx:600,gm:"Màn cuối. Giờ bạn là người nắm cỗ máy. Hãy xem bạn dùng nó vì ai.",id:"Aria Whitmore, 41 tuổi.\nNhà sáng lập, chủ tịch công ty AI Whitmore Tech, hiện nay. Cháu cố của một ông chủ ngân hàng Phố Wall.\nChủ đề: CMCN 4.0, giới hạn lịch sử.",rule:"Máy càng học nhiều, người càng ít việc. Người sở hữu phải chịu trách nhiệm.",
+nodes:[
+{s:"Hội đồng quản trị trình bạn kế hoạch: mô hình AI thay 40% nhân sự văn phòng, dữ liệu của hàng triệu người dùng đã được dùng chưa xin phép, nhà đầu tư thúc giục. Nora Doyle, chủ tịch công đoàn ngành, xin gặp bạn.",ec:{organize:"Một nhóm công đoàn nhỏ trong công ty đang chờ phản hồi của bạn.",sign:"Hàng nghìn thỏa thuận bảo mật đã được ký, và bạn biết chúng chứa gì.",complyai:"Một kỹ sư trong nhóm dữ liệu từng huấn luyện chính mô hình này rồi bị thải.",coopjoin:"Nora kể một nhóm cựu nhân viên đã dựng thử hợp tác xã dữ liệu.",bonus:"Tiền thưởng ngân hàng năm 2008 từng nuôi quỹ đầu tư đầu tiên của dòng họ bạn.",law:"Đạo luật dữ liệu năm xưa buộc công ty bạn phải có bộ phận đạo đức.",expose:"Danh sách công bố năm 2010 vẫn được nhắc đến trong các khóa luật."},v:"Cổ đông muốn con số. Nhân viên muốn việc làm. Mình là người cầm công tắc, và sẽ không ai khác chịu trách nhiệm thay.",
+c:[{t:"Triển khai ngay, cắt 40% nhân sự, để giá cổ phiếu tăng",f:[300,-10,-25,-5],k:"accel",e:1,l:"Chủ tư bản thay lao động sống bằng máy để giảm chi phí: cấu tạo hữu cơ tăng. Nhưng giá trị thặng dư vẫn gốc từ lao động sống, nên lợi nhuận bình quân bị đe dọa (Chương 3, 6)."},
+{t:"Giữ nhân sự, rút ngắn tuần làm còn 4 ngày, chia sẻ năng suất",f:[-60,0,20,15],k:"share",e:1,l:"Lực lượng sản xuất phát triển rất cao (AI), nhưng nếu quan hệ sản xuất không đổi thì lợi ích tập trung ở thiểu số. Chia sẻ năng suất là một cách điều chỉnh quan hệ lợi ích (Chương 4, 5, 6)."},
+{t:"Mời kiểm toán độc lập xem xét mô hình và nguồn dữ liệu",f:[-40,-5,15,15],k:"audit",e:1,l:"Minh bạch hóa dữ liệu và thuật toán làm cho tư liệu sản xuất mới chịu sự giám sát xã hội."}]},
+{s:"Mô hình vượt mong đợi. Nhóm đạo đức xác nhận hàng chục nghìn người sẽ mất việc trong một năm. Đối thủ cũng đang tăng tốc: bạn chậm thì họ nuốt thị phần. Nora vẫn chờ câu trả lời của bạn.",ec:{leakin:"Bài báo của một nhân viên cũ đang được chia sẻ khắp mạng.",suit:"Đơn kiện tập thể của nhân viên đã tới bàn bạn.",accel:"Cổ phiếu tăng 12% trong một tuần, hàng nghìn email thôi việc đã được gửi.",share:"Một số giám đốc bắt đầu gọi bạn là “chủ tịch của công đoàn”.",audit:"Báo cáo kiểm toán chỉ ra những nguồn dữ liệu chưa được cấp phép."},v:"Nếu ai cũng chạy đua, loài người sẽ về đâu? Hay mình chỉ là một bánh răng sang trọng của cỗ máy mình sở hữu?",
+c:[{t:"Ép nhân viên ký NDA, giữ kín số liệu và tăng tốc",f:[300,-10,-30,-10],k:"nda",e:2,l:"Chiếm hữu tư nhân kết quả của lao động đã xã hội hóa cao là mâu thuẫn cơ bản (Chương 4)."},
+{t:"Công bố số liệu tác động việc làm, chấp nhận mất lợi thế",f:[-120,-15,40,15],k:"leak",e:2,l:"Giải quyết mâu thuẫn cần lực lượng xã hội, không chỉ thông tin. Nhưng thông tin là điểm bắt đầu (Chương 5)."},
+{t:"Cùng Nora lập hợp tác xã dữ liệu, chia lợi ích cho người đóng góp",r:"union|organize|coopjoin",rh:"cần dư ảnh: bạn đã lập hội nghề (Manchester) hoặc cùng đồng nghiệp lập công đoàn",f:[-60,-10,30,25],k:"coop",e:2,l:"Hợp tác xã là hình thức sở hữu tập thể, một thành phần của nền kinh tế thị trường định hướng xã hội chủ nghĩa (Chương 5)."}]},
+{s:"Hội đồng quản trị đặt trước mặt bạn một nút: giữ toàn quyền kiểm soát hệ thống AI, hoặc một bản đề xuất mở. Mọi con đường bạn đã đi quy về một khoảnh khắc.",ec:{coop:"Hợp tác xã dữ liệu có 3.000 thành viên đang chờ bạn.",nda:"Bản NDA nặng hơn bạn tưởng.",leak:"Công luận đang nhìn."},v:"Mọi kiếp trước đều dẫn về đây. Một dư ảnh. Ai đứng trên mặt sàn lúc này?",
+c:[{t:"Nhấn nút: giữ độc quyền AI, mua lại mọi đối thủ",f:[300,-10,-30,-15],e:"f"},
+{t:"Đề xuất cơ chế sở hữu và quản trị chung dữ liệu",f:[-100,0,35,25],e:"f"},
+{t:"Mở mã nguồn cho thế giới, cùng xây thể chế mới",r:"coop",rh:"cần dư ảnh: hợp tác xã dữ liệu",f:[-150,-10,40,30],e:"f"}]}]},
+{n:"Chủ xưởng thế kỷ XIX",s:[300,70,60],mx:900,gm:"Bạn đổi chỗ: lần này bạn cầm sổ lương. Cùng xưởng, cùng năm, chỉ khác phía của chiếc bàn.",id:"Edmund Ashworth, 46 tuổi.\nChủ xưởng gang Ashworth, Manchester, 1847. Cùng xưởng với kiếp thợ lò.\nChủ đề: giá trị thặng dư, đối kháng lợi ích.",rule:"Mỗi giờ thợ làm thêm là một đồng lãi. Mỗi đồng lãi là một giờ không trả công.",
+nodes:[
+{s:"Giá sắt hạ, đối thủ ở Birmingham cắt giá. Quản đốc đề nghị tăng ngày làm lên 16 giờ, giữ nguyên tiền công, đặt thêm máy cạnh lò. Hàng trăm người thất nghiệp đứng ngoài cổng. Mary Doyle, đại diện thợ dệt, xin gặp bạn.",ec:{obey:"Bạn nhớ cái lưng còng ở ca đêm. Bạn biết 16 giờ nghĩa là gì ở phía bên kia sổ lương.",strike:"Bạn nhớ mùi lò nguội trong ngày bãi công. Mary nhìn bạn như thể cô nhận ra điều gì đó.",betray:"Cái tên bạn từng mách nằm trong sổ của quản đốc."},v:"Ta không ác, ta chỉ không muốn phá sản. Nhưng mỗi đồng ta giữ lại là một phần sức khỏe của họ.",
+c:[{t:"Tăng ngày làm lên 16 giờ, thuê người thất nghiệp để dọa kẻ phản đối",f:[300,-5,-20,-10],k:"extend",e:1,l:"Kéo dài ngày lao động để chiếm nhiều giá trị thặng dư tuyệt đối hơn. Đội quân thất nghiệp giúp ép giá sức lao động (Chương 3)."},
+{t:"Đầu tư máy mới để tăng năng suất, giữ ngày làm 12 giờ",f:[100,0,10,10],k:"machine",e:1,l:"Tăng năng suất lao động tạo giá trị thặng dư tương đối: rút ngắn thời gian lao động tất yếu. Tư bản tìm lợi nhuận bằng máy móc chứ không chỉ bằng giờ làm (Chương 3)."},
+{t:"Gặp Mary Doyle, thỏa thuận 12 giờ có thưởng năng suất",r:"strike",rh:"cần dư ảnh: kiếp thợ lò bạn từng bãi công",f:[-60,0,25,15],k:"concede",e:1,l:"Nhượng bộ của chủ thường là kết quả của sức ép tập thể. Nó chia lại một phần giá trị thặng dư nhưng quan hệ làm thuê vẫn còn (Chương 3, 5)."}]},
+{s:"Ca đêm: lò nổ, một thợ chết. Báo chí đến hỏi. Máy hơi nước mới có thể thay ba thợ lò. Công ty bảo hiểm chỉ chi trả nếu chủ không nhận lỗi.",ec:{extend:"Số giờ làm dài hơn được nhắc đến là một nguyên nhân.",machine:"Máy mới chưa chạy xong thì lò cũ đã cháy.",concede:"Thợ làm 12 giờ, tai nạn ít hơn bạn lo.",union:"Hội nghề do một thợ tên Hale lập đang quan sát phản ứng của bạn.",press:"Báo Hiến chương có bản sao sổ lương của xưởng."},v:"Mười năm ta nuôi họ. Nhưng một mạng người cũng chỉ là một dòng trong sổ chi phí sao?",
+c:[{t:"Đổ lỗi cho nạn nhân, đưa một shilling, thay thợ bằng máy",f:[200,-5,-25,-10],k:"blame",e:2,l:"Thay lao động bằng máy làm tăng cấu tạo hữu cơ tư bản và tạo ra nhân khẩu thừa. Chi phí rủi ro bị đẩy sang người lao động (Chương 3)."},
+{t:"Nhận trách nhiệm, bồi thường và sửa an toàn lò",f:[-100,0,25,15],k:"safety",e:2,l:"Chi phí an toàn làm giảm lợi nhuận trước mắt nhưng bảo vệ sức lao động, điều kiện để tái sản xuất ra chính tư bản."},
+{t:"Đàm phán công nhận hội nghề của thợ",r:"union",rh:"cần dư ảnh: kiếp thợ lò bạn từng lập hội nghề",f:[-80,0,20,25],k:"recognize",e:2,l:"Công nhân có tổ chức làm thay đổi tương quan lực lượng. Thương lượng tập thể là đấu tranh giai cấp được thể chế hóa (Chương 3, 5)."}]},
+{s:"Quốc hội bàn đạo luật 10 giờ. Các chủ xưởng họp kín để vận động chống luật. Cùng lúc, một nhà báo xin phỏng vấn bạn về sổ lương. Đây là điểm cuối của cuộc đối đầu giữa hai phía của chiếc bàn.",ec:{blame:"Cái tên người thợ chết vẫn nằm trong hồ sơ.",safety:"Xưởng bạn bắt đầu có tiếng là nơi thợ ít bị thương.",recognize:"Hội nghề đang giữ một bản thỏa thuận với bạn."},v:"Ta sống bằng giờ lao động của họ. Họ sống bằng tiền công của ta. Ai phụ thuộc ai?",
+c:[{t:"Góp tiền vào quỹ vận động chống đạo luật 10 giờ",f:[100,0,-30,-15],k:"lobby",e:"f",l:"Mâu thuẫn lợi ích: giờ lao động ngắn đi là phần giá trị thặng dư bị giảm. Cả hai phía đều tìm sức mạnh nhà nước (Chương 3, 4)."},
+{t:"Ủng hộ luật 10 giờ, đổi lại cam kết ổn định từ hội nghề",f:[-60,0,25,20],k:"support10",e:"f",l:"Nhượng bộ có điều kiện giúp giữ ổn định chế độ nhưng không thay đổi quan hệ sở hữu."},
+{t:"Công khai sổ lương cho nhà báo",r:"press",rh:"cần dư ảnh: kiếp thợ lò bạn từng đưa sổ lương cho báo chí",f:[-120,-10,35,25],k:"openbooks",e:"f",l:"Công khai giá trị thặng dư làm lộ quan hệ bóc lột. Điều này khiến chính giai cấp chủ phải đối diện sự thật."}]}]},
+{n:"Công nhân năm 2008",s:[60,80,55],mx:300,gm:"Bạn đứng ở phía bên kia của cuộc khủng hoảng.",id:"Randy Marsh, 41 tuổi.\nCông nhân dây chuyền nhà máy ô tô, Ohio, 2008. Vay thế chấp mua nhà. Em họ nhà báo Nora Doyle.\nChủ đề: khủng hoảng, nợ, tư bản tài chính.",rule:"Căn nhà là tài sản của ngân hàng. Cái mất là của bạn.",
+nodes:[
+{s:"Tháng 9/2008, Lehman Brothers sụp. Nhà máy thông báo cắt 30% ca làm, trong khi khoản vay thế chấp lãi thả nổi của bạn sắp tăng. Người môi giới từng nói giá nhà chỉ có lên. Nora Doyle gọi điện: “Anh giữ lại mọi giấy tờ vay đi.”",v:"Mình trả nợ đều đặn mười năm. Vậy mà số phận căn nhà lại nằm trong một phòng họp ở Phố Wall.",
+c:[{t:"Cắt chi tiêu, nhận thêm ca, cố trả nợ đúng hạn",f:[30,-25,-5,-5],k:"payup",e:1,l:"Người làm thuê chịu rủi ro tài chính: lương không tăng theo giá nhà. Tín dụng là cách tư bản tài chính thu lợi từ thu nhập tương lai của người lao động (Chương 3, 4)."},
+{t:"Vay thêm thẻ tín dụng để giữ nhà, hy vọng giá nhà tăng lại",f:[40,-10,-10,-5],k:"debt",e:1,l:"Nợ che đậy sức mua thiếu hụt. Tư bản giả phình ra, và khi bong bóng vỡ thì người vay chịu thiệt (Chương 3, 4)."},
+{t:"Gửi giấy tờ vay cho Nora và nhóm bảo vệ người vay",f:[-10,-10,25,15],k:"docs",e:1,l:"Thông tin được tập hợp tập thể làm thay đổi cán cân giữa người vay riêng lẻ và ngân hàng lớn."}]},
+{s:"Một năm sau, chính phủ cứu trợ ngân hàng 700 tỷ USD, còn nhà máy của bạn đóng một dây chuyền. Ngân hàng gửi thông báo tịch biên nhà. Báo chí đưa tin ban lãnh đạo ngân hàng vẫn nhận thưởng. Nora đang tổ chức biểu tình trước Phố Wall.",ec:{payup:"Bạn đã trả đúng hạn đến tháng cuối cùng, và vẫn nhận thông báo.",debt:"Nợ thẻ tín dụng nuốt hết khoản tiết kiệm cuối.",docs:"Giấy tờ bạn gửi đang nằm trong hồ sơ của nhóm bảo vệ người vay."},v:"Họ được cứu bằng tiền thuế mình đóng. Mình mất nhà mà không ai cứu. Mình nên giận, hay nên im?",
+c:[{t:"Xuống đường cùng Nora trước Phố Wall",f:[-10,-10,25,20],k:"rally",e:2,l:"Đấu tranh tập thể chuyển bất bình cá nhân thành ý thức xã hội. Khi nhà nước cứu tư bản mà bỏ mặc người vay, mâu thuẫn lợi ích lộ ra (Chương 4, 5)."},
+{t:"Chấp nhận tịch biên, chuyển sang thuê nhà, tìm việc mới",f:[-20,-15,0,-5],k:"accept",e:2,l:"Chịu thiệt một mình: tổn thất bị xã hội hóa lên vai người lao động, còn lợi nhuận đã tư hữu hóa."},
+{t:"Bán lại căn nhà cho quỹ đầu cơ mua nợ xấu để lấy tiền mặt",f:[60,-5,-15,-10],k:"vulture",e:2,l:"Tư bản tài chính tìm lợi nhuận cả từ khủng hoảng: mua rẻ tài sản của người đang khó khăn (Chương 4)."}]},
+{s:"Quốc hội sắp tranh luận luật bảo vệ người vay. Nhóm của Nora cần người làm chứng trước ủy ban điều trần. Một quan chức Bộ Tài chính tên Reyes đang cân nhắc có nên ủng hộ hay không. Đây là đêm cuối cùng của bạn.",ec:{rally:"Những người từng đứng cạnh bạn trên phố vẫn nhắn tin cho bạn.",docs:"Hồ sơ vay của bạn là bằng chứng trong báo cáo.",vulture:"Số tiền bán nhà đã cạn, chỉ còn khoản nợ thuế."},v:"Nếu mình lên tiếng, có ai nghe? Nếu mình im, ai sẽ nhớ chuyện đã xảy ra?",
+c:[{t:"Làm chứng trước ủy ban điều trần",f:[-20,-15,25,20],k:"testify",e:"t",o:"Bạn kể câu chuyện của mình trước ống kính. Một số nghị sĩ nghe, một số nhìn đồng hồ. Nhưng lời chứng được đưa vào báo cáo, và có một người ở Bộ Tài chính đọc nó. Hồn bạn trôi sang phía bên kia bàn.",l:"Tiếng nói tập thể và công khai tạo sức ép lên bộ máy nhà nước (Chương 4, 5)."},
+{t:"Ký thỏa thuận hòa giải riêng, nhận bồi thường và cam kết im lặng",f:[40,0,-20,-10],k:"settle",e:"t",o:"Khoản bồi thường đủ thuê một căn hộ nhỏ. Điều khoản im lặng nằm trong tờ giấy bạn ký. Cuộc điều trần vẫn diễn ra, không có tên bạn. Hồn bạn trôi sang phía bên kia bàn.",l:"Thỏa thuận riêng lẻ hóa vấn đề tập thể, giúp tư bản tránh tiền lệ và trách nhiệm xã hội."},
+{t:"Cùng nhóm vay lập quỹ hợp tác mua lại nhà cho nhau",r:"rally",rh:"cần dư ảnh: bạn đã xuống đường cùng Nora",f:[-30,-5,20,25],k:"mutual",e:"t",o:"Hai mươi gia đình góp tiền, mua lại ba căn nhà từ ngân hàng với giá thấp và cho nhau ở. Nhỏ, nhưng nó đứng được. Hồn bạn trôi sang phía bên kia bàn.",l:"Hợp tác xã và sở hữu tập thể là hình thức liên kết kinh tế của người lao động (Chương 5)."}]}]},
+{n:"Nhân viên công ty AI hiện đại",s:[90,75,55],mx:400,gm:"Bạn đứng ở phía bên kia màn hình. Danh sách sa thải đang chạy.",id:"Lin Aurelio, 33 tuổi.\nKỹ sư dữ liệu tại Whitmore Tech, hiện nay. Làm công ăn lương, có cổ phiếu thưởng nhưng không có quyền quyết định.\nChủ đề: AI thay thế lao động, nhân khẩu thừa.",rule:"Bạn được trả tiền để dạy máy làm công việc của chính mình.",
+nodes:[
+{s:"Ban lãnh đạo yêu cầu nhóm của bạn huấn luyện mô hình AI mới để tự động hóa công việc văn phòng. Bạn biết mô hình sẽ thay chính đồng nghiệp trong nhóm, trong đó có người sắp nghỉ hộ sản. Phần thưởng là cổ phiếu và lời hứa “không ảnh hưởng đến nhóm mình”. Nora Doyle, đại diện công đoàn ngành, nhắn bạn một dòng: “Cậu đang viết gì vậy?”",v:"Mình viết mã để làm việc, nhưng hôm nay mình viết mã để thay đồng nghiệp. Và có thể là thay cả mình.",
+c:[{t:"Làm đúng hạn, nhận cổ phiếu thưởng, tin rằng mình an toàn",f:[120,-10,-20,-5],k:"complyai",e:1,l:"Người lao động trực tiếp tạo ra tư liệu sản xuất thay thế mình: lao động quá khứ (thuật toán, máy móc) thay lao động sống. Cổ phiếu thưởng không đổi vị thế làm thuê (Chương 3, 6)."},
+{t:"Âm thầm ghi lại nguồn gốc dữ liệu huấn luyện",f:[-10,-5,10,15],k:"logdata",e:1,l:"Minh bạch về dữ liệu, một tư liệu sản xuất mới, là điều kiện để xã hội giám sát (Chương 4, 6)."},
+{t:"Cùng đồng nghiệp lập nhóm công đoàn, đề xuất đào tạo lại trước khi triển khai",f:[-30,-10,25,20],k:"organize",e:1,l:"Người lao động có tổ chức đòi chia sẻ rủi ro và lợi ích của tiến bộ công nghệ. Đây là đấu tranh giai cấp trong thời đại số (Chương 3, 5)."}]},
+{s:"Một sáng, hàng nghìn email thôi việc được gửi cùng lúc, và bạn nhận một cái. Công ty trả trợ cấp 3 tháng nếu bạn ký thỏa thuận giữ bí mật. Giá cổ phiếu công ty vừa tăng. Báo chí hỏi vì sao công ty lãi kỷ lục mà vẫn sa thải.",ec:{complyai:"Mô hình bạn huấn luyện chính là hệ thống đã lập ra danh sách này.",logdata:"Nhật ký dữ liệu bạn ghi chép nằm trong một ổ đĩa riêng.",organize:"Nhóm công đoàn nhỏ của bạn đã có 200 người ký tên."},v:"Mình vừa dạy máy làm việc của mình. Giờ máy ở lại, mình ra đi.",
+c:[{t:"Ký thỏa thuận, nhận 3 tháng trợ cấp, lặng lẽ ra đi",f:[60,-5,-10,-10],k:"sign",e:2,l:"Nhân khẩu thừa tương đối: cấu tạo hữu cơ tư bản tăng, lao động sống bị thải loại. Thỏa thuận riêng lẻ hóa một vấn đề tập thể (Chương 3)."},
+{t:"Từ chối ký, đưa dữ liệu và email cho nhà báo",r:"logdata|organize",rh:"cần dư ảnh: bạn đã ghi lại dữ liệu hoặc cùng đồng nghiệp lập công đoàn",f:[-40,-10,25,20],k:"leakin",e:2,l:"Công khai quan hệ giữa lợi nhuận kỷ lục và sa thải để công luận kiểm tra (Chương 3, 5)."},
+{t:"Cùng nhóm kiện tập thể, đòi trợ cấp và quyền lợi từ dữ liệu",r:"organize",rh:"cần dư ảnh: bạn đã cùng đồng nghiệp lập công đoàn",f:[-50,-15,30,25],k:"suit",e:2,l:"Hành động pháp lý tập thể điều chỉnh quan hệ lợi ích giữa lao động và tư bản (Chương 4, 5)."}]},
+{s:"Ba tháng sau, thị trường lao động công nghệ co lại, nhiều nơi tuyển ít hơn. Nora mời bạn tham gia một hợp tác xã dữ liệu, trong khi một công ty khác chào bạn làm hệ thống giám sát nhân viên bằng AI. Đây là quyết định cuối của bạn.",ec:{sign:"Khoản trợ cấp đang cạn dần.",leakin:"Bài báo bạn đưa vẫn được chia sẻ.",suit:"Vụ kiện tập thể đang được thụ lý."},v:"Mình có thể làm một cỗ máy khác cho người khác kiểm soát nhân viên, hoặc làm một cỗ máy thuộc về chính những người tạo ra nó.",
+c:[{t:"Nhận việc xây hệ thống giám sát nhân viên bằng AI",f:[100,-5,-25,-10],k:"surveil",e:"t",o:"Bạn đổi một chiếc ghế lấy một chiếc ghế khác, ở phía bên kia màn hình giám sát. Lương cao hơn, nhưng mỗi dòng mã sẽ đo từng phút của người khác. Hồn bạn trôi sang phía người nắm cỗ máy.",l:"Lao động bị thuê để kiểm soát lao động khác: quan hệ làm thuê tái sản xuất ngay trong lực lượng sản xuất mới (Chương 3, 6)."},
+{t:"Tạm nghỉ, tự học thêm và tìm việc mới",f:[-20,-5,0,-5],k:"retool",e:"t",o:"Bạn học thêm, nộp hồ sơ, bị từ chối nhiều lần. Chi phí đào tạo lại mình bạn gánh. Hồn bạn trôi sang phía người nắm cỗ máy.",l:"Đào tạo lại là cần thiết, nhưng nếu chỉ cá nhân gánh chi phí thì tổn thất vẫn bị chuyển sang người lao động (Chương 3, 6)."},
+{t:"Tham gia hợp tác xã dữ liệu cùng Nora",r:"organize|logdata",rh:"cần dư ảnh: bạn đã ghi lại dữ liệu hoặc lập công đoàn",f:[-30,-5,25,25],k:"coopjoin",e:"t",o:"Hợp tác xã còn nhỏ, nhưng mô hình, dữ liệu và lợi nhuận thuộc về người đóng góp. Hồn bạn trôi sang phía người nắm cỗ máy.",l:"Sở hữu tập thể dữ liệu và công cụ là một cách xã hội hóa tư liệu sản xuất mới (Chương 5, 6)."}]}]}
+];
+
+const CHARACTER_META=[
+  {name:"Tom Hale",role:"THỢ LÒ · MANCHESTER 1847",bg1:"#301b1c",bg2:"#111923",accent:"#e69a69",coat:"#334451",shirt:"#bd9b78",hair:"#211b19",skin:"#b97f62",style:"cap",mark:"bụi than"},
+  {name:"J. H. Whitmore",role:"CHỦ NGÂN HÀNG · PHỐ WALL 1910",bg1:"#26202b",bg2:"#101522",accent:"#d7b477",coat:"#283343",shirt:"#d9d6ca",hair:"#b8b2a7",skin:"#c79a7e",style:"slick",mark:"tư bản tài chính"},
+  {name:"Daniel Reyes",role:"QUAN CHỨC · WASHINGTON 2008",bg1:"#152a38",bg2:"#0d1420",accent:"#77c7d4",coat:"#243b50",shirt:"#d9e0e3",hair:"#322b29",skin:"#b9856b",style:"glasses",mark:"chính sách"},
+  {name:"Aria Whitmore",role:"NHÀ SÁNG LẬP AI · HIỆN NAY",bg1:"#172c35",bg2:"#111522",accent:"#8cd6df",coat:"#293f52",shirt:"#c8d4d9",hair:"#191d26",skin:"#c58f79",style:"long",mark:"công nghệ"},
+  {name:"Edmund Ashworth",role:"CHỦ XƯỞNG · MANCHESTER 1847",bg1:"#352516",bg2:"#151923",accent:"#d5a65e",coat:"#534333",shirt:"#ddd0b7",hair:"#2b2019",skin:"#c18a6d",style:"sideburn",mark:"sở hữu tư liệu sản xuất"},
+  {name:"Randy Marsh",role:"CÔNG NHÂN · OHIO 2008",bg1:"#2a2923",bg2:"#111720",accent:"#d5a96c",coat:"#4a5153",shirt:"#b8c0b8",hair:"#3a3029",skin:"#b98065",style:"hardhat",mark:"lao động làm thuê"},
+  {name:"Lin Aurelio",role:"KỸ SƯ DỮ LIỆU · HIỆN NAY",bg1:"#152b3b",bg2:"#0d1421",accent:"#78c8de",coat:"#26394d",shirt:"#8ca9b4",hair:"#24232a",skin:"#b98570",style:"glasses2",mark:"lao động số"},
+  {name:"Mary Doyle",role:"THỢ DỆT · MANCHESTER 1847",bg1:"#332322",bg2:"#111923",accent:"#d99b79",coat:"#45535a",shirt:"#d2b49a",hair:"#28202a",skin:"#c08b72",style:"long",mark:"đồng nghiệp"},
+  {name:"Nora Doyle",role:"NHÀ BÁO ĐIỀU TRA · 2008",bg1:"#202c39",bg2:"#101722",accent:"#80c6d6",coat:"#354657",shirt:"#c7d1d6",hair:"#211d23",skin:"#c28b75",style:"glasses",mark:"nhà báo"},
+  {name:"Ellen Doyle",role:"ĐẠI DIỆN CÔNG ĐOÀN THÉP",bg1:"#29243a",bg2:"#111722",accent:"#c2a3d7",coat:"#454053",shirt:"#d6c8bb",hair:"#30212a",skin:"#c38f78",style:"long",mark:"đại diện lao động"},
+  {name:"Victor Whitmore III",role:"CEO NGÂN HÀNG · 2008",bg1:"#29202a",bg2:"#111722",accent:"#d6b77f",coat:"#303a49",shirt:"#d6d3c9",hair:"#aaa7a0",skin:"#c39178",style:"slick",mark:"lãnh đạo ngân hàng"}
+];
+function portraitSvg(index,prefix="portrait"){
+  const m=CHARACTER_META[index]||CHARACTER_META[0],id=`${prefix}-${index}`;
+  if(index===5) return `<img class="randy-marsh-image" src="data:image/webp;base64,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" alt="Randy Marsh – công nhân nhà máy ô tô tại Ohio, năm 2008" loading="eager">`;
+  let hair="<path d='M130 74Q132 35 174 31Q218 34 221 79L208 66Q184 54 151 66L137 84Z' fill='VAR_HAIR'/>".replaceAll("VAR_HAIR",m.hair);
+  let accessory="";
+  if(m.style==="cap") accessory="<path d='M126 66Q140 26 180 29Q211 31 222 67L202 63L135 77Z' fill='#4d5b5a'/><path d='M125 68Q170 56 227 71L216 81Q166 72 127 82Z' fill='#26353a'/>";
+  if(m.style==="slick") hair="<path d='M133 70Q132 33 177 31Q214 32 220 70L205 57Q184 43 154 57L138 83Z' fill='"+m.hair+"'/><path d='M146 44Q178 27 211 48' fill='none' stroke='#e2d8ca' stroke-width='5' opacity='.55'/>";
+  if(m.style==="glasses"||m.style==="glasses2") accessory+="<g fill='none' stroke='#252a31' stroke-width='3'><rect x='143' y='78' width='27' height='18' rx='5'/><rect x='179' y='78' width='27' height='18' rx='5'/><path d='M170 85H179'/></g>";
+  if(m.style==="long") hair="<path d='M127 81Q118 30 174 26Q228 27 225 89L224 153Q208 145 209 105L201 67Q181 52 151 67L143 104L138 151L124 144Z' fill='"+m.hair+"'/>";
+  if(m.style==="sideburn") hair="<path d='M129 76Q130 30 177 31Q218 34 220 77L204 64Q180 49 151 64L138 82Z' fill='"+m.hair+"'/><path d='M137 81L142 112L151 115L150 91M209 80L206 111L197 116L198 90' fill='"+m.hair+"'/>";
+  if(m.style==="hardhat") {hair="<path d='M138 72Q139 43 177 41Q211 43 216 74L204 67L151 67Z' fill='"+m.hair+"'/>";accessory+="<path d='M124 60Q128 28 177 27Q222 29 228 61L217 70H131Z' fill='#c6a05f'/><path d='M122 61H230' stroke='#e9d29b' stroke-width='5'/>";}
+  return `<svg viewBox="0 0 320 220" role="img" aria-label="Chân dung ${m.name}"><defs><linearGradient id="${id}-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${m.bg1}"/><stop offset="1" stop-color="${m.bg2}"/></linearGradient><linearGradient id="${id}-coat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${m.coat}"/><stop offset="1" stop-color="#121a25"/></linearGradient><radialGradient id="${id}-light"><stop stop-color="${m.accent}" stop-opacity=".48"/><stop offset="1" stop-color="${m.accent}" stop-opacity="0"/></radialGradient></defs><rect width="320" height="220" fill="url(#${id}-bg)"/><circle class="portrait-light" cx="242" cy="64" r="112" fill="url(#${id}-light)"/><g opacity=".24" fill="none" stroke="${m.accent}"><path d="M0 174H320M0 188H320M18 0V220M45 0V220M278 0V220" stroke-width=".7"/><circle cx="266" cy="53" r="44"/><circle cx="266" cy="53" r="60" stroke-dasharray="3 7"/></g><g fill="#080d15" opacity=".55"><path d="M0 154L34 128L57 146L79 118L101 150V220H0ZM231 145L252 126L271 145L292 119L320 146V220H231Z"/></g><g class="portrait-dust" fill="${m.accent}" opacity=".46"><circle cx="34" cy="43" r="2"/><circle cx="68" cy="77" r="1.5"/><circle cx="278" cy="106" r="2"/><circle cx="250" cy="26" r="1.5"/><circle cx="99" cy="29" r="1.2"/></g><path d="M73 220Q82 162 123 148L146 137H194L218 148Q260 168 267 220Z" fill="url(#${id}-coat)"/><path d="M141 141L158 162L177 188L195 160L185 139Z" fill="${m.shirt}"/><path d="M162 151L177 164L171 220H151L148 164Z" fill="#293746" opacity=".88"/><path d="M151 119H190V157Q173 173 151 157Z" fill="${m.skin}"/><ellipse cx="174" cy="88" rx="42" ry="51" fill="${m.skin}"/><path d="M138 91Q141 127 162 136Q185 142 207 115Q198 157 165 153Q130 144 132 102Z" fill="#8f5d4d" opacity=".15"/>${hair}${accessory}<g fill="#27242a"><ellipse cx="157" cy="89" rx="3.4" ry="2.2"/><ellipse cx="190" cy="89" rx="3.4" ry="2.2"/></g><path d="M173 91L168 106L176 108" stroke="#8d5c4e" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M160 119Q174 125 188 118" fill="none" stroke="#784d48" stroke-width="2" stroke-linecap="round"/><path d="M134 81Q146 72 160 77M184 77Q200 71 211 82" fill="none" stroke="${m.hair}" stroke-width="5" stroke-linecap="round"/><path d="M132 154L113 178L91 220M216 154L238 180L253 220" fill="none" stroke="${m.accent}" stroke-opacity=".52" stroke-width="2"/><rect x="12" y="12" width="5" height="26" rx="2" fill="${m.accent}"/><text x="27" y="23" fill="${m.accent}" font-size="8" font-family="monospace" letter-spacing="1.4">CHARACTER FILE</text><text x="27" y="37" fill="#e7edf2" font-size="10" font-family="sans-serif">${m.role.replaceAll("&","&amp;")}</text><path d="M242 190h62M242 195h42" stroke="${m.accent}" opacity=".65" stroke-width="1"/></svg>`;
+}
+function renderCharacterPortrait(index){
+  const target=$("#character-portrait");
+  if(target){target.innerHTML=portraitSvg(index,"active-character");target.classList.remove("portrait-refresh");void target.offsetWidth;target.classList.add("portrait-refresh");}
+}
+function renderStoryCast(text){
+  const target=$("#story-cast");if(!target)return;
+  const cast=[
+    {name:"Mary Doyle",index:7,match:/Mary Doyle/i},
+    {name:"Nora Doyle",index:8,match:/Nora Doyle|\bNora\b/i},
+    {name:"Ellen Doyle",index:9,match:/Ellen Doyle|\bEllen\b/i},
+    {name:"Victor Whitmore III",index:10,match:/Victor Whitmore III/i},
+    {name:"Edmund Ashworth",index:4,match:/Ashworth/i},
+    {name:"J. H. Whitmore",index:1,match:/J\. H\. Whitmore|Whitmore/i},
+    {name:"Daniel Reyes",index:2,match:/Reyes/i}
+  ].filter(item=>item.match.test(text||""));
+  target.innerHTML=cast.map((item,k)=>`<span class="story-cast-item" style="animation-delay:${k*.08}s"><span class="story-cast-avatar">${portraitSvg(item.index,"cast-"+k)}</span><span><b>${item.name}</b><small>${CHARACTER_META[item.index].role}</small></span></span>`).join("");
+}
+const CHOICE_THEMES={
+  work:{tag:"LAO ĐỘNG",label:"Lao động và tiền công",color:"#e5a36d",art:`<g fill="#172330"><path d="M12 78V49L42 34V48L67 34V49L94 34V78Z"/><rect x="19" y="56" width="8" height="11" fill="#e5a36d"/><rect x="45" y="56" width="8" height="11" fill="#e5a36d"/><rect x="72" y="56" width="8" height="11" fill="#e5a36d"/></g><g class="art-float"><path d="M117 76V50Q117 40 129 38L141 34L153 40L166 38Q177 43 177 55V92H117Z" fill="#d0a176"/><circle cx="147" cy="27" r="15" fill="#bf8b6d"/><path d="M130 27Q132 8 149 10Q164 10 165 27L157 21L137 23Z" fill="#25323b"/><path d="M130 53L147 63L165 52L174 96H119Z" fill="#405361"/><path d="M139 64L147 70L155 64" stroke="#f2c58e" stroke-width="2" fill="none"/></g>`},
+  protest:{tag:"HÀNH ĐỘNG TẬP THỂ",label:"Đấu tranh và đoàn kết",color:"#e77b70",art:`<g fill="#d9b58a"><circle cx="48" cy="48" r="9"/><circle cx="76" cy="42" r="8"/><circle cx="103" cy="48" r="9"/></g><g fill="#334454"><path d="M32 89Q32 63 48 62Q64 63 64 89ZM61 89Q61 59 76 57Q92 59 92 89ZM88 89Q88 63 103 62Q119 63 119 89Z"/></g><g class="art-float"><path d="M141 91L135 61Q135 54 141 51L146 38L153 46L158 30L166 40L172 54L168 91Z" fill="#d99b71"/><path d="M136 63L123 54L119 58L137 78" fill="#d99b71"/><path d="M139 92L170 92L175 98H133Z" fill="#e77b70"/></g><path d="M16 22H111L104 38H16Z" fill="#7f3f43"/><path d="M22 26H96" stroke="#f4cfb2" stroke-width="2" opacity=".8"/>`},
+  betrayal:{tag:"LỢI ÍCH CÁ NHÂN",label:"Phản bội và chia rẽ",color:"#d5786f",art:`<g class="art-float"><path d="M22 72L54 40L84 69L116 35" fill="none" stroke="#d5786f" stroke-width="5" stroke-linecap="round"/><path d="M103 34L119 31L115 48" fill="none" stroke="#d5786f" stroke-width="4"/><circle cx="47" cy="77" r="14" fill="#d4a076"/><circle cx="92" cy="77" r="14" fill="#647586"/><path d="M47 92V98M92 92V98" stroke="#e7edf3" stroke-width="4"/></g><path d="M68 20L85 37L68 54L51 37Z" fill="#c9a15f"/><path d="M68 28V39M68 45V47" stroke="#171c25" stroke-width="3" stroke-linecap="round"/>`},
+  compensation:{tag:"AN SINH VÀ BỒI THƯỜNG",label:"Bồi thường và tổn thất",color:"#d6b77f",art:`<g class="art-float"><path d="M20 71Q20 47 45 44Q68 45 68 71V90H20Z" fill="#647586"/><circle cx="44" cy="31" r="16" fill="#bd8a70"/><path d="M83 34H132V82H83Z" rx="5" fill="#263b4c" stroke="#d6b77f" stroke-width="2"/><path d="M107 44V72M93 58H121" stroke="#e9c98f" stroke-width="5" stroke-linecap="round"/><circle cx="155" cy="76" r="15" fill="#d6b77f"/><path d="M149 76H161M155 70V82" stroke="#513f28" stroke-width="2"/></g>`},
+  union:{tag:"TỔ CHỨC NGƯỜI LAO ĐỘNG",label:"Công đoàn và hội nghề",color:"#89cbd7",art:`<g fill="#d1a17c"><circle cx="53" cy="38" r="12"/><circle cx="91" cy="32" r="13"/><circle cx="130" cy="39" r="12"/></g><g fill="#355365"><path d="M31 91Q31 57 53 57Q75 57 75 91ZM65 91Q65 52 91 52Q117 52 117 91ZM108 91Q108 57 130 57Q152 57 152 91Z"/></g><path d="M70 15H111L106 25H70Z" fill="#d6b77f"/><path d="M91 15V4" stroke="#d6b77f" stroke-width="2"/>`},
+  documents:{tag:"THÔNG TIN VÀ CHỨNG CỨ",label:"Hồ sơ và bằng chứng",color:"#85c7d7",art:`<g class="art-float"><path d="M54 16H123L143 36V88H54Z" fill="#d8d2c3"/><path d="M123 16V37H143" fill="#a6b3bc"/><path d="M68 48H126M68 59H126M68 70H112" stroke="#607181" stroke-width="3" stroke-linecap="round"/><circle cx="119" cy="75" r="17" fill="none" stroke="#d67e75" stroke-width="4"/><path d="M107 87L97 98" stroke="#d67e75" stroke-width="5" stroke-linecap="round"/></g>`},
+  police:{tag:"XUNG ĐỘT VÀ KIỂM SOÁT",label:"Đối mặt quyền lực",color:"#d97a72",art:`<g class="art-float"><path d="M90 15L139 31V59Q133 82 90 96Q47 82 41 59V31Z" fill="#293b4d" stroke="#d97a72" stroke-width="3"/><path d="M90 31L116 42V58Q111 73 90 82Q69 73 64 58V42Z" fill="#17222f"/><path d="M90 42L95 57L111 58L99 68L103 82L90 73L77 82L81 68L69 58L85 57Z" fill="#d6b77f"/></g>`},
+  journey:{tag:"DI CHUYỂN VÀ SINH KẾ",label:"Rời bỏ nơi cũ",color:"#80c6d6",art:`<g class="art-float"><path d="M31 77H151L135 91H52Z" fill="#293c4d"/><path d="M85 25V76H127Z" fill="#d6b77f"/><path d="M80 32L48 71H80Z" fill="#e7d7b8"/><path d="M84 18V79" stroke="#e7edf3" stroke-width="3"/><path d="M19 99Q53 90 84 99T161 99" fill="none" stroke="#80c6d6" stroke-width="3"/></g>`},
+  monopoly:{tag:"TẬP TRUNG TƯ BẢN",label:"Sáp nhập và độc quyền",color:"#d6b77f",art:`<g fill="#27384a"><rect x="19" y="52" width="45" height="42"/><rect x="69" y="32" width="48" height="62"/><rect x="123" y="46" width="38" height="48"/></g><g fill="#d6b77f"><rect x="29" y="63" width="7" height="8"/><rect x="45" y="63" width="7" height="8"/><rect x="82" y="45" width="8" height="9"/><rect x="99" y="45" width="8" height="9"/><rect x="135" y="58" width="7" height="8"/></g><g class="art-float" fill="none" stroke="#d6b77f" stroke-width="3"><path d="M50 24Q91 -1 132 24"/><path d="M124 16L134 24L121 30"/></g>`},
+  competition:{tag:"CẠNH TRANH",label:"Đối đầu thị trường",color:"#80c6d6",art:`<g fill="#27384a"><path d="M12 90V51L37 38V51L60 38V90Z"/><path d="M122 90V51L146 38V51L169 38V90Z"/></g><path d="M77 19L62 54H85L72 81L113 42H91L105 19Z" fill="#d6b77f" class="art-float"/><path d="M67 94H113" stroke="#80c6d6" stroke-width="2"/>`},
+  negotiation:{tag:"THƯƠNG LƯỢNG",label:"Đàm phán lợi ích",color:"#d6b77f",art:`<g class="art-float"><path d="M20 59L55 35L81 54L106 35L153 60L126 84L98 68L79 85L51 69Z" fill="#bf906f"/><path d="M63 53L88 70L106 56L119 65L95 88L67 78" fill="#d6ad85"/><path d="M28 88L52 70L72 85L57 98H32Z" fill="#4c6070"/><path d="M117 84L137 68L158 86L151 98H124Z" fill="#607889"/></g>`},
+  export:{tag:"XUẤT KHẨU TƯ BẢN",label:"Vốn và thị trường bên ngoài",color:"#d6b77f",art:`<g class="art-float"><path d="M15 69H157L138 88H40Z" fill="#33485a"/><rect x="45" y="46" width="25" height="21" fill="#b7805f"/><rect x="74" y="37" width="27" height="30" fill="#d6b77f"/><rect x="105" y="48" width="22" height="19" fill="#8faab3"/><path d="M82 14V37" stroke="#e6edf2" stroke-width="3"/><path d="M85 16L126 29H85Z" fill="#d6b77f"/></g><path d="M15 99Q52 90 85 99T157 99" stroke="#80c6d6" stroke-width="2" fill="none"/>`},
+  markets:{tag:"THỊ TRƯỜNG TÀI CHÍNH",label:"Đầu cơ và chứng khoán",color:"#80c6d6",art:`<g class="art-float"><path d="M22 86L49 65L75 72L103 40L129 49L158 21" stroke="#80c6d6" stroke-width="4" fill="none"/><path d="M145 21H159V35" stroke="#80c6d6" stroke-width="4" fill="none"/><g fill="#d6b77f"><circle cx="46" cy="32" r="15"/><circle cx="77" cy="35" r="10"/><circle cx="111" cy="25" r="8"/></g><path d="M22 92H158" stroke="#67798a" stroke-width="2"/></g>`},
+  industry:{tag:"NĂNG SUẤT VÀ MÁY MÓC",label:"Đầu tư sản xuất",color:"#d6b77f",art:`<g fill="#26384a"><path d="M14 90V52L42 37V51L70 37V52L98 37V90Z"/><rect x="109" y="44" width="47" height="46"/></g><g class="art-float"><circle cx="134" cy="66" r="17" fill="none" stroke="#d6b77f" stroke-width="6"/><circle cx="134" cy="66" r="5" fill="#d6b77f"/><path d="M134 42V33M134 99V90M110 66H101M167 66H158M117 49L110 42M151 83L158 90M151 49L158 42M117 83L110 90" stroke="#d6b77f" stroke-width="5"/></g>`},
+  war:{tag:"SẢN XUẤT THỜI CHIẾN",label:"Đơn hàng quân sự",color:"#d97a72",art:`<g fill="#30404a"><path d="M17 91V52L46 40V53L73 40V91Z"/><rect x="95" y="58" width="55" height="33" rx="3"/></g><path d="M100 58L108 43H143L151 58Z" fill="#8d6b4a"/><path d="M126 43V17" stroke="#d6b77f" stroke-width="2"/><path d="M128 19L153 28L128 37Z" fill="#d97a72"/><path d="M22 97H164" stroke="#d6b77f" stroke-width="2"/>`},
+  refusal:{tag:"TỪ CHỐI LỢI ÍCH",label:"Từ chối đơn hàng",color:"#80c6d6",art:`<g class="art-float"><circle cx="91" cy="55" r="37" fill="#223748" stroke="#80c6d6" stroke-width="3"/><path d="M67 31L115 79" stroke="#d97a72" stroke-width="7" stroke-linecap="round"/><path d="M115 31L67 79" stroke="#d97a72" stroke-width="7" stroke-linecap="round"/></g>`},
+  bailout:{tag:"CAN THIỆP NHÀ NƯỚC",label:"Cứu trợ tài chính",color:"#d6b77f",art:`<g fill="#354456"><path d="M27 43L91 13L155 43Z"/><path d="M34 48H148V55H34Z"/><rect x="39" y="60" width="12" height="32"/><rect x="71" y="60" width="12" height="32"/><rect x="103" y="60" width="12" height="32"/><rect x="135" y="60" width="12" height="32"/></g><g class="art-float"><circle cx="92" cy="69" r="12" fill="#d6b77f"/><path d="M87 69H97M92 63V75" stroke="#5e4a2e" stroke-width="2"/></g>`},
+  oversight:{tag:"GIÁM SÁT VÀ ĐIỀU KIỆN",label:"Điều kiện cứu trợ",color:"#80c6d6",art:`<g fill="#354456"><path d="M25 42L91 13L157 42Z"/><rect x="30" y="46" width="122" height="8"/><rect x="40" y="56" width="9" height="34"/><rect x="84" y="56" width="9" height="34"/><rect x="128" y="56" width="9" height="34"/><rect x="27" y="92" width="126" height="7"/></g><g class="art-float" fill="none" stroke="#80c6d6" stroke-width="3"><circle cx="145" cy="26" r="14"/><path d="M155 37L168 50"/></g>`},
+  collapse:{tag:"KHỦNG HOẢNG",label:"Để thị trường sụp đổ",color:"#d97a72",art:`<g fill="#273747"><path d="M29 90V48L51 36L70 49V90Z"/><path d="M111 90V35L134 20L156 35V90Z"/></g><path d="M18 22L53 41L80 32L104 58L139 76L166 88" stroke="#d97a72" stroke-width="4" fill="none"/><path d="M151 78L166 89L151 91" fill="none" stroke="#d97a72" stroke-width="3"/>`},
+  bonus:{tag:"TIỀN THƯỞNG",label:"Thưởng và lợi nhuận",color:"#d6b77f",art:`<g class="art-float"><circle cx="91" cy="52" r="34" fill="#d6b77f"/><circle cx="91" cy="52" r="26" fill="none" stroke="#6e5734" stroke-width="2"/><path d="M91 32V72M80 43H99M80 62H99" stroke="#6e5734" stroke-width="4" stroke-linecap="round"/><path d="M49 84H133" stroke="#d6b77f" stroke-width="5" stroke-linecap="round"/></g>`},
+  briefcase:{tag:"SỰ NGHIỆP VÀ TƯ VẤN",label:"Cơ hội nghề nghiệp",color:"#d6b77f",art:`<g class="art-float"><rect x="32" y="39" width="118" height="55" rx="8" fill="#35485a" stroke="#d6b77f" stroke-width="3"/><path d="M68 39V27Q68 18 78 18H104Q114 18 114 27V39" fill="none" stroke="#d6b77f" stroke-width="5"/><path d="M32 60H150M82 55H100V67H82Z" fill="#d6b77f"/><path d="M91 18V5M91 5L108 12" stroke="#80c6d6" stroke-width="3" fill="none"/></g>`},
+  law:{tag:"PHÁP LUẬT VÀ THỂ CHẾ",label:"Luật và quyền lợi",color:"#80c6d6",art:`<g class="art-float" stroke="#d6b77f" stroke-width="3" fill="none"><path d="M91 20V83M57 36H125M91 20L57 36M91 20L125 36"/><path d="M50 36L36 66H64Z" fill="#d6b77f"/><path d="M132 36L118 66H146Z" fill="#d6b77f"/><path d="M67 89H115M76 97H106"/></g>`},
+  layoffs:{tag:"VIỆC LÀM VÀ TỰ ĐỘNG HÓA",label:"Sa thải và mất việc",color:"#d97a72",art:`<g fill="#314252"><rect x="24" y="20" width="54" height="67" rx="5"/><rect x="101" y="36" width="54" height="51" rx="5"/></g><path d="M38 43H64M38 55H64M115 52H141" stroke="#aec3ce" stroke-width="3"/><g class="art-float"><path d="M82 64L97 79L82 94L67 79Z" fill="#d97a72"/><path d="M78 79H86" stroke="#fff" stroke-width="3"/></g>`},
+  share:{tag:"PHÂN PHỐI LỢI ÍCH",label:"Chia sẻ năng suất",color:"#80c6d6",art:`<g fill="#314b5b"><circle cx="45" cy="45" r="10"/><circle cx="91" cy="35" r="10"/><circle cx="137" cy="45" r="10"/><path d="M25 88Q25 61 45 61Q65 61 65 88ZM71 88Q71 51 91 51Q111 51 111 88ZM117 88Q117 61 137 61Q157 61 157 88Z"/></g><g class="art-float" fill="#d6b77f"><circle cx="91" cy="20" r="8"/><path d="M87 20H95M91 16V24" stroke="#5e4a2e" stroke-width="2"/></g>`},
+  audit:{tag:"KIỂM TOÁN VÀ MINH BẠCH",label:"Kiểm tra độc lập",color:"#80c6d6",art:`<g class="art-float"><path d="M48 15H119L139 35V91H48Z" fill="#d4d5cc"/><path d="M119 15V36H139" fill="#9eabb4"/><path d="M62 49H122M62 61H108M62 73H94" stroke="#627587" stroke-width="3"/><circle cx="126" cy="75" r="18" fill="none" stroke="#80c6d6" stroke-width="4"/><path d="M139 88L154 99" stroke="#80c6d6" stroke-width="5" stroke-linecap="round"/></g>`},
+  nda:{tag:"THỎA THUẬN BẢO MẬT",label:"Giữ im lặng và ràng buộc",color:"#d97a72",art:`<g class="art-float"><path d="M34 24H144V90H34Z" fill="#d4d4c9"/><path d="M34 24L89 62L144 24" fill="none" stroke="#7e8c97" stroke-width="3"/><rect x="74" y="56" width="32" height="30" rx="5" fill="#d97a72"/><path d="M81 56V47Q81 38 90 38Q99 38 99 47V56" fill="none" stroke="#e7c997" stroke-width="4"/></g>`},
+  leak:{tag:"CÔNG KHAI THÔNG TIN",label:"Tiết lộ và công bố",color:"#80c6d6",art:`<g class="art-float"><path d="M37 20H117L139 42V91H37Z" fill="#d5d5ca"/><path d="M117 20V43H139" fill="#9eabb4"/><path d="M52 54H119M52 65H110M52 76H91" stroke="#627587" stroke-width="3"/><path d="M144 20L161 7M150 39L172 35M147 57L170 65" stroke="#80c6d6" stroke-width="3" stroke-linecap="round"/></g>`},
+  cooperative:{tag:"SỞ HỮU CHUNG",label:"Hợp tác xã và cộng đồng",color:"#80c6d6",art:`<g fill="#324c5c"><circle cx="91" cy="18" r="10"/><circle cx="39" cy="67" r="10"/><circle cx="143" cy="67" r="10"/><path d="M72 52Q72 34 91 34Q110 34 110 52V68H72ZM20 99Q20 78 39 78Q58 78 58 99ZM124 99Q124 78 143 78Q162 78 162 99Z"/></g><g fill="none" stroke="#80c6d6" stroke-width="3"><path d="M83 29L48 60M99 29L134 60M49 74H133"/></g><circle cx="91" cy="69" r="6" fill="#d6b77f"/>`},
+  ai:{tag:"TRÍ TUỆ NHÂN TẠO",label:"AI và quyền kiểm soát",color:"#9b9be8",art:`<g class="art-float"><rect x="51" y="20" width="80" height="70" rx="11" fill="#25384d" stroke="#9b9be8" stroke-width="3"/><rect x="67" y="36" width="48" height="38" rx="5" fill="#121d2b" stroke="#80c6d6" stroke-width="2"/><path d="M77 51L86 43L95 51L104 43M86 62L95 54L104 62" fill="none" stroke="#9b9be8" stroke-width="3" stroke-linecap="round"/><path d="M91 10V20M91 90V101M40 55H51M131 55H143" stroke="#9b9be8" stroke-width="4"/></g><g fill="#80c6d6"><circle cx="42" cy="31" r="3"/><circle cx="144" cy="81" r="3"/><circle cx="145" cy="28" r="3"/></g>`},
+  governance:{tag:"QUẢN TRỊ CHUNG",label:"Cùng quyết định",color:"#80c6d6",art:`<g fill="none" stroke="#80c6d6" stroke-width="3"><path d="M91 53L43 25M91 53L139 25M91 53L43 84M91 53L139 84"/></g><g fill="#2d4b5d" stroke="#d6b77f" stroke-width="2"><circle cx="91" cy="53" r="19"/><circle cx="43" cy="25" r="12"/><circle cx="139" cy="25" r="12"/><circle cx="43" cy="84" r="12"/><circle cx="139" cy="84" r="12"/></g><circle cx="91" cy="53" r="6" fill="#d6b77f"/>`},
+  open:{tag:"MỞ VÀ CHIA SẺ TRI THỨC",label:"Mã nguồn mở",color:"#80c6d6",art:`<g class="art-float" fill="none" stroke="#80c6d6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M64 30L35 55L64 80M118 30L147 55L118 80M102 23L80 87"/></g><circle cx="91" cy="55" r="41" fill="none" stroke="#d6b77f" stroke-opacity=".45" stroke-width="2" stroke-dasharray="4 6"/>`},
+  safety:{tag:"AN TOÀN LAO ĐỘNG",label:"Bảo vệ người lao động",color:"#80c6d6",art:`<g class="art-float"><path d="M38 52Q40 19 91 17Q142 19 144 52V61H38Z" fill="#d6b77f"/><path d="M32 57H150V67H32Z" fill="#7d6848"/><path d="M91 35V55" stroke="#4b4133" stroke-width="3"/><path d="M90 68L126 83L120 108L90 119L60 108L54 83Z" fill="#294558" stroke="#80c6d6" stroke-width="3"/><path d="M76 91L87 102L107 80" fill="none" stroke="#e4eaf0" stroke-width="4"/></g>`},
+  lobby:{tag:"VẬN ĐỘNG CHÍNH SÁCH",label:"Tác động đến chính sách",color:"#d6b77f",art:`<g fill="#35485a"><path d="M20 40L91 12L162 40Z"/><rect x="24" y="44" width="134" height="7"/><rect x="35" y="54" width="10" height="37"/><rect x="69" y="54" width="10" height="37"/><rect x="103" y="54" width="10" height="37"/><rect x="137" y="54" width="10" height="37"/><rect x="22" y="94" width="138" height="7"/></g><g class="art-float"><path d="M91 18V3M91 7L107 13L91 18" stroke="#d6b77f" stroke-width="3" fill="none"/></g>`},
+  debt:{tag:"NỢ VÀ TÍN DỤNG",label:"Vay nợ và thế chấp",color:"#d6b77f",art:`<g class="art-float"><path d="M23 56L91 18L159 56V95H23Z" fill="#33485a"/><path d="M71 95V66H111V95" fill="#172635" stroke="#d6b77f" stroke-width="2"/><path d="M91 18V5" stroke="#d6b77f" stroke-width="2"/><rect x="119" y="22" width="37" height="24" rx="4" fill="#d6b77f"/><path d="M127 34H147" stroke="#5b4b32" stroke-width="2"/></g>`},
+  foreclosure:{tag:"MẤT NHÀ VÀ TỊCH BIÊN",label:"Tịch biên tài sản",color:"#d97a72",art:`<g><path d="M23 55L91 20L159 55V95H23Z" fill="#33485a"/><path d="M73 95V65H110V95" fill="#172635" stroke="#9eb2be" stroke-width="2"/><path d="M119 15V72" stroke="#d97a72" stroke-width="3"/><path d="M122 17H159V46H122Z" fill="#d97a72"/><path d="M129 27H151M129 35H147" stroke="#fff1e8" stroke-width="2"/></g>`},
+  testimony:{tag:"ĐIỀU TRẦN VÀ LÀM CHỨNG",label:"Trình bày bằng chứng",color:"#80c6d6",art:`<g fill="#34485a"><path d="M20 93V45L91 15L162 45V93Z"/><rect x="32" y="50" width="8" height="38"/><rect x="58" y="50" width="8" height="38"/><rect x="84" y="50" width="8" height="38"/><rect x="110" y="50" width="8" height="38"/><rect x="136" y="50" width="8" height="38"/></g><g class="art-float"><rect x="84" y="32" width="13" height="28" rx="6" fill="#d6b77f"/><path d="M78 51Q78 70 91 70Q104 70 104 51M91 70V86M78 86H104" stroke="#d6b77f" stroke-width="3" fill="none"/></g>`},
+  surveillance:{tag:"GIÁM SÁT BẰNG CÔNG NGHỆ",label:"Giám sát người lao động",color:"#9b9be8",art:`<g class="art-float"><path d="M24 54Q91 -2 158 54Q91 110 24 54Z" fill="#263a4d" stroke="#9b9be8" stroke-width="3"/><circle cx="91" cy="54" r="20" fill="#80c6d6"/><circle cx="91" cy="54" r="9" fill="#15212e"/><circle cx="95" cy="49" r="3" fill="#e7edf3"/><path d="M91 13V2M18 54H5M164 54H177" stroke="#9b9be8" stroke-width="2"/></g>`},
+  learning:{tag:"ĐÀO TẠO VÀ THÍCH ỨNG",label:"Học tập và chuyển đổi nghề",color:"#80c6d6",art:`<g class="art-float"><path d="M24 35Q56 18 91 36Q126 18 158 35V88Q124 72 91 91Q57 72 24 88Z" fill="#d6d0bd"/><path d="M91 36V91M38 49Q62 43 78 54M104 54Q127 43 145 49" stroke="#66798a" stroke-width="3" fill="none"/><path d="M114 24L130 8L145 22" stroke="#80c6d6" stroke-width="3" fill="none"/></g>`},
+  generic:{tag:"QUYẾT ĐỊNH",label:"Một ngã rẽ mới",color:"#d6b77f",art:`<g class="art-float"><path d="M91 18V50M91 50L44 83M91 50L138 83" stroke="#d6b77f" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="91" cy="18" r="9" fill="#80c6d6"/><circle cx="44" cy="83" r="9" fill="#d97a72"/><circle cx="138" cy="83" r="9" fill="#80c6d6"/></g>`}
+};
+function choiceTheme(c){
+  const t=(c.t||"").toLowerCase();
+  const rules=[
+    [/mách quản đốc|đổ lỗi cho nạn nhân|phản bội/,"betrayal"],
+    [/giám sát nhân viên/,"surveillance"],
+    [/bãi công|xuống đường|đấu tranh/,"protest"],
+    [/shilling|bồi thường|người chết|thợ chết/,"compensation"],
+    [/tư vấn|cố vấn|chuyên gia/,"briefcase"],
+    [/công đoàn|hội nghề|nghiệp đoàn/,"union"],
+    [/xuất khẩu tư bản|thuộc địa/,"export"],
+    [/đầu cơ|chứng khoán|quỹ đầu cơ/,"markets"],
+    [/sáp nhập|trust thép|mua lại mọi đối thủ|giữ độc quyền/,"monopoly"],
+    [/giữ cạnh tranh/,"competition"],
+    [/đàm phán|ellen|thỏa thuận 12 giờ|hứa tăng lương/,"negotiation"],
+    [/đơn hàng chiến tranh|chiến tranh/,"war"],
+    [/từ chối đơn hàng/,"refusal"],
+    [/cứu trợ/,"bailout"],
+    [/cổ phần nhà nước|giám sát|trần lương/,"oversight"],
+    [/để thị trường tự thanh lọc/,"collapse"],
+    [/duyệt thưởng|nhận cổ phiếu thưởng|tiền thưởng/,"bonus"],
+    [/điều trần|làm chứng/,"testimony"],
+    [/sa thải|cắt 40% nhân sự|mất việc/,"layoffs"],
+    [/giữ nhân sự|chia sẻ năng suất|4 ngày/,"share"],
+    [/kiểm toán/,"audit"],
+    [/nda|ký thỏa thuận|hòa giải riêng|cam kết im lặng|giữ kín/,"nda"],
+    [/công bố số liệu|đưa dữ liệu.*nhà báo|tiết lộ|bản kê/,"leak"],
+    [/hợp tác xã|quỹ hợp tác/,"cooperative"],
+    [/quản trị chung|sở hữu.*chung|cơ chế sở hữu/,"governance"],
+    [/mã nguồn mở|mở mã nguồn/,"open"],
+    [/ai|mô hình/,"ai"],
+    [/tự học|đào tạo lại|học thêm|tìm việc mới/,"learning"],
+    [/luật|đạo luật|kiện tập thể/,"law"],
+    [/chống đạo luật|vận động chống/,"lobby"],
+    [/tịch biên/,"foreclosure"],
+    [/vay thêm|thẻ tín dụng|trả nợ|thế chấp/,"debt"],
+    [/máy mới|máy hơi nước|năng suất|đầu tư vào xưởng|thay thợ bằng máy/,"industry"],
+    [/an toàn lò|sửa an toàn|bồi thường/,"safety"],
+    [/nhà báo|hồ sơ|giấy tờ|sổ lương|bệnh án|ghi lại nguồn|đưa hồ sơ|công khai/,"documents"],
+    [/cảnh sát/,"police"],
+    [/trốn sang mỹ|di cư|rời bỏ nơi cũ/,"journey"],
+    [/bán lại căn nhà|đầu tư|vốn/,"markets"],
+    [/kéo dài ngày làm|ca đêm|ngày làm|cắt chi tiêu|nhận thêm ca|cắm đầu làm/,"work"],
+    [/làm đúng hạn/,"work"]
+  ];
+  for(const [re,key] of rules)if(re.test(t))return key;
+  return "generic";
+}
+function choiceArtSvg(themeKey,uid){
+  const item=CHOICE_THEMES[themeKey]||CHOICE_THEMES.generic;
+  return `<svg viewBox="0 0 180 108" role="img" aria-label="Minh họa: ${item.label}"><defs><linearGradient id="${uid}-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1b2938"/><stop offset="1" stop-color="#0b111b"/></linearGradient><radialGradient id="${uid}-glow"><stop stop-color="${item.color}" stop-opacity=".26"/><stop offset="1" stop-color="${item.color}" stop-opacity="0"/></radialGradient></defs><rect width="180" height="108" fill="url(#${uid}-bg)"/><ellipse cx="140" cy="24" rx="74" ry="56" fill="url(#${uid}-glow)"/><g opacity=".17" stroke="${item.color}" stroke-width=".7"><path d="M0 18H180M0 42H180M0 66H180M0 90H180M20 0V108M60 0V108M100 0V108M140 0V108"/></g><g fill="#080e17" opacity=".58"><path d="M0 79L20 67L34 77L52 60L68 75V108H0ZM112 80L130 66L144 78L161 58L180 74V108H112Z"/></g><g opacity=".6" fill="${item.color}"><circle class="art-spark" cx="20" cy="24" r="2"/><circle class="art-spark" cx="158" cy="21" r="1.7"/><circle cx="147" cy="91" r="1.4"/></g>${item.art}<path d="M9 101H171" stroke="${item.color}" stroke-opacity=".4" stroke-width="1"/></svg>`;
+}
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+function renderChoices(){
+  $("#choices").innerHTML=node.c.map((c,k)=>{
+    const locked=!!(c.r&&!c.r.split("|").some(key=>F[key]));
+    const themeKey=choiceTheme(c),theme=CHOICE_THEMES[themeKey]||CHOICE_THEMES.generic;
+    const uid=`choice-${li}-${ni}-${k}`;
+    const title=locked?`Đang khóa · ${c.rh||"Chưa đủ điều kiện"}`:c.t;
+    return `<button type="button" class="choice-card${locked?" lk":""}" data-k="${k}" data-theme="${themeKey}" ${locked?"disabled aria-disabled=\"true\"":""} aria-label="${escapeHTML(title)}" style="animation-delay:${.07+k*.13}s"><span class="choice-visual">${choiceArtSvg(themeKey,uid)}</span><span class="choice-copy"><span class="choice-meta"><b class="choice-number">${String(k+1).padStart(2,"0")}</b><small class="choice-tag">${theme.tag}</small></span><span class="choice-title">${escapeHTML(title)}</span>${locked?`<span class="choice-lock">${escapeHTML(c.rh||"Đáp án này chưa được mở khóa.")}</span>`:`<span class="choice-hint">CHỌN ĐỂ XEM HỆ QUẢ</span>`}</span><span class="choice-arrow" aria-hidden="true">↗</span></button>`;
+  }).join("");
+}
+
+const $=s=>document.querySelector(s);
+let li=0,ni=0,S=null,F={},CH=[],G=0,node,busy,end,ov,decisionTimerId=null,timerDeadline=0,timerRemainingMs=0,timerActive=false,pos=0,SEQ=[0,1,2,3],QT=45,runMode=4,lastArchive=null;
+const sw=e=>{e.classList.remove("sw");void e.offsetWidth;e.classList.add("sw")};
+const typ=(e,t,sp=14)=>{clearInterval(e._t);e.textContent="";let i=0;e._t=setInterval(()=>{e.textContent=t.slice(0,++i);if(i>=t.length)clearInterval(e._t)},sp)};
+function hud(d){const v=[S.m,S.h,S.c,S.g],mx=[L[li].mx,100,100,100];["m","h","c","g"].forEach((k,i)=>{$("#v"+k).textContent=v[i];$("#b"+k).style.width=Math.max(0,Math.min(100,v[i]/mx[i]*100))+"%";if(d&&d[i]){const e=$("#d"+k);e.textContent=(d[i]>0?"+":"")+d[i];e.style.color=d[i]>0?"var(--bl)":"var(--rd)";e.classList.remove("go");void e.offsetWidth;e.classList.add("go")}})}
+function chain(){$("#ch").innerHTML=CH.length?CH.map(a=>`<span class="k${a[0]}">${["I","II","III","IV"][a[0]]}: ${a[1]}</span>`).join(""):"<em>Chưa có dấu vết. Mỗi lựa chọn sẽ để lại dư ảnh cho kiếp sau.</em>"}
+function life(p){pos=p;li=SEQ[p];ni=0;const l=L[li];S={m:l.s[0],h:l.s[1],c:l.s[2],g:S?S.g:0};document.querySelectorAll("#steps i").forEach((e,k)=>e.className=k<p?"done":k==p?"on":"");$("#idt").textContent=l.id+"\n\nLuật: "+l.rule;renderCharacterPortrait(li);$("#stt").textContent="Cốt truyện – kiếp "+(p+1)+": "+l.n;hud();chain();scene();show()}
+function paintDecisionTimer(ms){
+  const total=Math.max(1,QT*1000);
+  const remaining=Math.max(0,Math.min(total,ms));
+  const seconds=Math.ceil(remaining/1000);
+  $("#tm div").style.width=(remaining/total*100)+"%";
+  $("#timer-countdown").textContent=String(seconds).padStart(2,"0");
+  $("#tm").classList.toggle("urgent",remaining>0&&remaining<=10000);
+  $("#tm").setAttribute("aria-valuemax",String(QT));
+  $("#tm").setAttribute("aria-valuenow",String(seconds));
+}
+function clearDecisionTimer(){
+  if(decisionTimerId!==null){clearInterval(decisionTimerId);decisionTimerId=null;}
+  timerActive=false;
+}
+function tickDecisionTimer(){
+  if(!timerActive||busy)return;
+  timerRemainingMs=Math.max(0,timerDeadline-performance.now());
+  paintDecisionTimer(timerRemainingMs);
+  if(timerRemainingMs<=0){
+    clearDecisionTimer();
+    $("#timer-state").textContent="HẾT GIỜ · ĐANG CHỌN";
+    const firstAvailable=node&&node.c?node.c.findIndex(c=>!c.r||c.r.split("|").some(k=>F[k])):-1;
+    if(firstAvailable>=0)pick(firstAvailable,true);
+    else $("#timer-state").textContent="KHÔNG CÓ LỰA CHỌN HỢP LỆ";
+  }
+}
+function startDecisionTimer(durationMs){
+  clearDecisionTimer();
+  timerRemainingMs=Math.max(0,durationMs);
+  timerDeadline=performance.now()+timerRemainingMs;
+  timerActive=timerRemainingMs>0;
+  $("#timer-state").textContent="CÒN LẠI";
+  paintDecisionTimer(timerRemainingMs);
+  if(timerActive)decisionTimerId=window.setInterval(tickDecisionTimer,100);
+  else tickDecisionTimer();
+}
+function stopDecisionTimer(status){
+  if(timerActive)timerRemainingMs=Math.max(0,timerDeadline-performance.now());
+  clearDecisionTimer();
+  paintDecisionTimer(timerRemainingMs);
+  $("#timer-state").textContent=status||"ĐÃ GHI NHẬN";
+}
+function pauseDecisionTimer(){
+  if(!timerActive)return;
+  timerRemainingMs=Math.max(0,timerDeadline-performance.now());
+  clearDecisionTimer();
+  paintDecisionTimer(timerRemainingMs);
+  $("#timer-state").textContent="TẠM DỪNG";
+}
+function resumeDecisionTimer(){
+  if(!busy&&!$("#game").classList.contains("hide")&&timerRemainingMs>0)startDecisionTimer(timerRemainingMs);
+}
+function timer(){startDecisionTimer(QT*1000)}
+function show(){
+  clearDecisionTimer();
+  node=L[li].nodes[ni];renderStoryCast(node.s);busy=false;end=null;
+  $("#lesson").classList.remove("show");$("#nx").classList.remove("show");
+  $("#timer-state").textContent="SẴN SÀNG";
+  $("#tm").classList.remove("urgent");
+  ["#idp","#story","#voice"].forEach(s=>sw($(s)));
+  const ex=Object.keys(node.ec||{}).filter(k=>F[k]).map(k=>"◈ Dư ảnh: "+node.ec[k]).join("\n");
+  typ($("#stx"),node.s+(ex?"\n\n"+ex:""),9);
+  setTimeout(()=>typ($("#vtx"),node.v,16),500);
+  renderChoices();
+  timer();
+}
+function pick(k,late){if(busy)return;const c=node.c[k];if(!c||(c.r&&!c.r.split("|").some(k=>F[k])))return;busy=true;stopDecisionTimer(late?"HẾT GIỜ · TỰ ĐỘNG CHỌN":"ĐÃ GHI NHẬN LỰA CHỌN");
+const f=c.f.slice();if(late){f[1]-=15;f[3]-=5}
+S.m=Math.max(0,S.m+f[0]);S.h=Math.min(100,S.h+f[1]);S.c=Math.min(100,S.c+f[2]);S.g=Math.max(0,Math.min(100,S.g+f[3]));hud(f);
+if(c.k){F[c.k]=1;CH.push([pos,FL[c.k]]);chain()}
+end=c.e;ov=c.o;
+if(S.h<=0&&end!="d"){end="d";ov="Cơ thể bạn không chịu nổi nữa. Mọi thứ tắt dần."}else if(S.c<=0&&end!="d"){end="d";ov="Không còn ai tin bạn. Bạn gục ngã giữa đám đông im lặng."}
+if(end=="t"&&pos==SEQ.length-1)end="f";document.querySelectorAll("#choices button").forEach((b,i)=>{b.disabled=true;b.classList.add(i==k?"pick":"dim");if(i===k){b.setAttribute("aria-pressed","true");b.classList.add("choice-confirmed")}else b.setAttribute("aria-pressed","false")});
+const ls=(late?"Do dự cũng là một lựa chọn: trò chơi không chờ ai. ":"")+(c.l||"Mọi con đường bạn đã đi quy về khoảnh khắc này. Không còn đúc kết nào khác ngoài chính bạn.");
+setTimeout(()=>{$("#lesson").classList.add("show");typ($("#lsx"),ls,10)},400);
+setTimeout(()=>{$("#nx").textContent=typeof end=="number"?"Tiếp tục":"Đối diện số phận";$("#nx").classList.add("show")},1100)}
+const NM=()=>{const n=SEQ.map(i=>["Tom","Whitmore","Reyes","Aria","Ashworth","Randy Marsh","Lin"][i]);return n.length>1?n.slice(0,-1).join(", ")+" và "+n[n.length-1]:n[0]};
+function finale(){const g=S.g,t=g>=70?["NGƯỜI CÙNG LÀM","Bạn nhận ra mình chưa từng là một người đơn lẻ. "+NM()+" đều là điểm giao của những quan hệ sản xuất. Mỗi lần bạn chọn đứng cùng người khác thay vì chỉ cứu mình, vòng quay chậm đi một nhịp."]:g>=35?["NGƯỜI THỨC TỈNH NỬA CHỪNG","Bạn đã thấy cấu trúc, nhưng nhiều lần vẫn chọn tự cứu mình trước. Nhận thức đã đến, hành động tập thể thì chưa đủ. Dư ảnh vẫn quay, chậm hơn."]:["BÁNH RĂNG","Tư bản không cần ác ý, chỉ cần mọi người cúi đầu và chọn lợi riêng. Bạn vẫn là bánh răng, và dư ảnh vẫn quay, đang chờ kiếp thứ năm."];
+return [t[0],"Dấu vết của bạn: "+(CH.map(a=>a[1]).join(" → ")||"không để lại gì")+".\nGiác ngộ: "+g+"/100.\n\n"+t[1]+"\n\n"+(SEQ[1]==4?"Tom và Ashworth đứng trong cùng một xưởng: chủ không có lợi nhuận nếu thiếu thợ, nhưng lợi nhuận ấy chính là phần lao động không công của thợ. Đó là sự thống nhất và đối kháng của hai giai cấp.\n\n":"")+(SEQ[0]==6?"Lin và Aria ngồi trong cùng một tòa nhà: một người bị thay bằng cỗ máy mình huấn luyện, người kia giữ quyền sở hữu cỗ máy. Tiến bộ kỹ thuật thuộc về ai là câu hỏi về quan hệ sản xuất, không phải câu hỏi về công nghệ.\n\n":"")+(SEQ[0]==5?"Randy Marsh và Reyes sống trong cùng một cuộc khủng hoảng: một người mất nhà, người kia quyết định ai được cứu. Nhà nước cứu ngân hàng bằng tiền thuế của chính những người mất nhà. Đó là độc quyền nhà nước nhìn từ hai phía.\n\n":"")+"Mác và Ăngghen hình dung một xã hội nơi sự phát triển tự do của mỗi người là điều kiện cho sự phát triển tự do của mọi người. Lênin chỉ ra độc quyền và tư bản tài chính là giai đoạn cao của chủ nghĩa tư bản, nơi lực lượng sản xuất đã được xã hội hóa mạnh mà chiếm hữu vẫn thuộc thiểu số. Giáo trình gọi đó là giới hạn lịch sử, bên cạnh vai trò lịch sử to lớn của chủ nghĩa tư bản. Với Việt Nam, lối đi là phát triển lực lượng sản xuất, kinh tế thị trường định hướng xã hội chủ nghĩa, công nghiệp hóa, hiện đại hóa, hội nhập quốc tế, vì dân giàu, nước mạnh, dân chủ, công bằng, văn minh.\n\nÝ nghĩa của "+(SEQ.length==2?"hai":"bốn")+" kiếp: giá trị không nằm ở việc tránh cái chết, mà ở việc hiểu vì sao người lao động phải chết sớm và thay đổi những điều kiện tạo ra điều đó. Bạn tỉnh dậy. Dư ảnh tan dần. Phần còn lại là việc của người đang sống."]}
+function over(k,t){const o=$("#ov");let m,x=t,sp=22;if(k=="f"){[m,x]=finale();if(t)x=t+"\n\n"+x;sp=7}else{m=k=="d"?"TỬ VONG":"BƯỚC NGOẶT";if(pos<SEQ.length-1)x+="\n\n[Người Điều Phối] "+L[SEQ[pos+1]].gm}
+o.className="on "+(k=="d"?"d":"t");$("#ot").textContent=m;typ($("#od"),x,sp);$("#om").classList.toggle("hide",k!="f");if(k=="f")unlock();$("#ob").textContent=(pos<SEQ.length-1&&k!="f")?"Tái sinh vào kiếp "+(pos+2):(k=="d"?"Xem điểm cuối":"Chơi lại từ đầu")}
+function start(m){clearDecisionTimer();runMode=m;SEQ=m==3?[0,4]:m==5?[5,2]:m==2?[6,3]:[0,1,2,3];QT=m==4?45:60;S=null;F={};CH=[];$("#steps").innerHTML=SEQ.map((x,k)=>`<i>${["I","II","III","IV"][k]}</i>`).join("");$("#intro").classList.add("hide");$("#game").classList.remove("hide");window.scrollTo(0,0);life(0)}
+$("#go3").onclick=()=>start(3);$("#go5").onclick=()=>start(5);$("#go2").onclick=()=>start(2);$("#go4").onclick=()=>start(4);
+$("#choices").onclick=e=>{const b=e.target.closest("button");if(b)pick(+b.dataset.k)};
+$("#nx").onclick=()=>{if(typeof end=="number"){ni=end;show()}else over(end,ov)};
+$("#ob").onclick=()=>{if(pos==SEQ.length-1&&end=="d"){end="f";over("f","");return}const rs=!(pos<SEQ.length-1&&end!="f");$("#ov").className="";if(rs){S=null;F={};CH=[];$("#game").classList.add("hide");$("#intro").classList.remove("hide");$("#steps").innerHTML="";window.scrollTo(0,0);return}setTimeout(()=>life(pos+1),500)};
+document.addEventListener("keydown",e=>{if($("#mb").classList.contains("on"))return;if($("#ov").classList.contains("on")){if(e.key=="Enter")$("#ob").click();return}if($("#game").classList.contains("hide")){if(e.key=="Enter")$("#go3").click();return}if(/^[1-4]$/.test(e.key))pick(+e.key-1);else if(e.key=="Enter"&&$("#nx").classList.contains("show"))$("#nx").click()});
+const MODE_NAMES={3:"Bản đối lập · Thợ lò & Chủ xưởng",5:"Bản chính trị · Công nhân & Quan chức 2008",2:"Bản công nghệ · Nhân viên & Chủ công ty AI",4:"Bản đầy đủ · 4 kiếp"};
+const ROMAN=["I","II","III","IV"];
+function unlock(){
+  lastArchive={mode:MODE_NAMES[runMode]||"Hành trình đã hoàn tất",runMode:runMode,lives:SEQ.map(i=>L[i].n),marks:CH.map(a=>[a[0],a[1]]),insight:S?S.g:0};
+  try{localStorage.setItem("dat_mail","1");localStorage.setItem("dat_mail_data",JSON.stringify(lastArchive))}catch(e){}
+  $("#mbtn").classList.remove("hide");
+}
+try{if(localStorage.getItem("dat_mail"))$("#mbtn").classList.remove("hide")}catch(e){}
+function mail(){
+  let data=lastArchive;
+  try{const saved=localStorage.getItem("dat_mail_data");if(saved)data=JSON.parse(saved)}catch(e){}
+  const lives=data&&Array.isArray(data.lives)?data.lives:[];
+  const marks=data&&Array.isArray(data.marks)?data.marks:[];
+  renderPractice(resolvePracticeMode(data));
+  $("#mail-run-title").textContent=data&&data.mode?data.mode:"Chưa có dữ liệu lượt chơi";
+  $("#mail-run-meta").textContent=lives.length?`${lives.length} kiếp đã hoàn tất · Giác ngộ ${Number(data.insight)||0}/100`:"Hoàn thành một lượt chơi để lưu dấu vết.";
+  $("#mail-intro").textContent=lives.length?`Bạn vừa hoàn thành ${data.mode||"một hành trình"}. Hãy nhìn lại các nhân vật và lựa chọn mình đã đi qua, sau đó thử sức với những câu hỏi kiến thức bên dưới.`:"Hộp thư đã mở khóa từ một lượt chơi trước. Hãy hoàn thành một lượt mới để cập nhật hành trình và dấu vết của bạn tại đây.";
+  $("#mail-rail-text").textContent=lives.length?`Bạn đã đi qua ${lives.length} kiếp người. Mỗi vai trò cho thấy một góc nhìn khác nhau về sản xuất, sở hữu và phân phối. Đừng chỉ nhớ kết cục; hãy nhớ điều gì đã dẫn tới nó.`:"Đây là nơi lưu lại kết quả sau hành trình. Khi hoàn tất một lượt chơi, dấu vết mới sẽ được ghi vào hồ sơ này.";
+  $("#mail-lives").innerHTML=lives.length?lives.map((name,i)=>`<div class="mail-life-item"><i>${ROMAN[i]||String(i+1)}</i><div><b>${name}</b><small>KIẾP ${i+1}</small></div></div>`).join(""):"<div class=\"mail-life-item\"><div><b>Chưa có hành trình được lưu</b><small>COMPLETE A RUN TO UPDATE</small></div></div>";
+  $("#mtr").innerHTML=marks.length?marks.map(a=>`<span>${ROMAN[a[0]]||"·"}: ${a[1]}</span>`).join(""):"<em>Không có dấu vết được lưu trong lượt chơi gần nhất.</em>";
+  pauseDecisionTimer();
+  $("#mb").classList.add("on");$("#mb").setAttribute("aria-hidden","false");document.body.classList.add("mail-open");$("#mb").scrollTop=0;
+}
+function closeMail(){$("#mb").classList.remove("on");$("#mb").setAttribute("aria-hidden","true");document.body.classList.remove("mail-open");resumeDecisionTimer()}
+$("#om").onclick=mail;$("#mbtn").onclick=mail;$("#mx").onclick=closeMail;
+$("#mb").addEventListener("click",e=>{if(e.target===$("#mb"))closeMail()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#mb").classList.contains("on"))closeMail()});
+
+const PRACTICE_BANKS={
+  3:{
+    title:"Thử thách · Thợ lò và Chủ xưởng",
+    duration:"03 PHÚT",
+    description:"Tập trung vào hàng hóa sức lao động, hai phương pháp sản xuất giá trị thặng dư và quá trình tích lũy tư bản trong xưởng máy thế kỷ XIX.",
+    questions:[
+      {chapter:"CHƯƠNG 3 · HÀNG HÓA SỨC LAO ĐỘNG",question:"Điểm đặc biệt trong giá trị sử dụng của hàng hóa sức lao động là gì?",options:["Chỉ chuyển nguyên giá trị của nó vào sản phẩm.","Có thể tạo ra lượng giá trị mới lớn hơn giá trị của bản thân nó.","Không tham gia vào quá trình tạo ra giá trị mới.","Luôn tạo ra lượng giá trị đúng bằng tiền công."],answer:1,explain:"Giáo trình nêu giá trị sử dụng đặc biệt của hàng hóa sức lao động: khi được sử dụng, nó có thể tạo ra lượng giá trị lớn hơn giá trị của chính nó."},
+      {chapter:"CHƯƠNG 3 · GIÁ TRỊ THẶNG DƯ TUYỆT ĐỐI",question:"Trong điều kiện các yếu tố khác không đổi, kéo dài ngày lao động vượt quá thời gian lao động tất yếu làm tăng loại giá trị thặng dư nào?",options:["Giá trị thặng dư tuyệt đối.","Giá trị thặng dư tương đối.","Giá trị thặng dư siêu ngạch.","Không làm thay đổi giá trị thặng dư."],answer:0,explain:"Giá trị thặng dư tuyệt đối thu được do kéo dài ngày lao động vượt quá thời gian lao động tất yếu khi năng suất, giá trị sức lao động và thời gian lao động tất yếu không đổi."},
+      {chapter:"CHƯƠNG 3 · GIÁ TRỊ THẶNG DƯ TƯƠNG ĐỐI",question:"Cách nào sau đây phù hợp với phương pháp sản xuất giá trị thặng dư tương đối?",options:["Tăng ngày lao động từ 8 giờ lên 10 giờ mà các điều kiện khác giữ nguyên.","Giảm tiền công bằng cách cắt khoản trả đã thỏa thuận mà không thay đổi năng suất.","Tăng năng suất ở các ngành sản xuất tư liệu sinh hoạt để rút ngắn thời gian lao động tất yếu.","Tăng giá bán hàng hóa bằng cách hạn chế lưu thông."],answer:2,explain:"Giá trị thặng dư tương đối có được nhờ rút ngắn thời gian lao động tất yếu. Giáo trình liên hệ điều này với việc tăng năng suất lao động trong các ngành sản xuất tư liệu sinh hoạt và tư liệu sản xuất phục vụ các ngành đó."},
+      {chapter:"CHƯƠNG 3 · TÍCH LŨY TƯ BẢN",question:"Theo giáo trình, tích tụ tư bản là gì?",options:["Hợp nhất nhiều tư bản cá biệt mà không làm tăng tư bản xã hội.","Chuyển toàn bộ tư bản cố định thành tư bản lưu động.","Chia nhỏ tư bản cá biệt thành các đơn vị độc lập.","Tăng quy mô tư bản cá biệt bằng cách tư bản hóa giá trị thặng dư."],answer:3,explain:"Tích tụ tư bản làm tăng quy mô tư bản cá biệt và đồng thời làm tăng quy mô tư bản xã hội, vì giá trị thặng dư được biến thành tư bản phụ thêm."},
+      {chapter:"CHƯƠNG 3 · BÀI TẬP VẬN DỤNG",question:"Một ngày lao động dài 8 giờ, trong đó thời gian lao động tất yếu là 4 giờ. Nếu ngày lao động kéo dài thêm 2 giờ và các yếu tố khác không đổi, thời gian lao động thặng dư là bao nhiêu?",options:["2 giờ.","4 giờ.","5 giờ.","6 giờ."],answer:3,explain:"Ngày lao động mới là 10 giờ; thời gian lao động tất yếu vẫn là 4 giờ, nên thời gian lao động thặng dư là 10 − 4 = 6 giờ. Đây là ví dụ trong phần giá trị thặng dư tuyệt đối."}
+    ]
+  },
+  5:{
+    title:"Thử thách · Khủng hoảng kinh tế năm 2008",
+    duration:"03 PHÚT",
+    description:"Đi từ khoản vay của người lao động đến quyền lực của ngân hàng, tư bản tài chính và mối quan hệ giữa độc quyền với nhà nước.",
+    questions:[
+      {chapter:"CHƯƠNG 4 · TƯ BẢN TÀI CHÍNH",question:"Theo giáo trình, tư bản tài chính hình thành từ sự hợp nhất giữa những bộ phận nào?",options:["Tư bản thương nghiệp và tư bản cho vay nhỏ lẻ.","Tư bản ngân hàng của một số ngân hàng độc quyền lớn với tư bản của các liên minh độc quyền công nghiệp.","Tư bản nhà nước và toàn bộ tư bản hộ gia đình.","Tư bản nông nghiệp và tư bản thương nghiệp."],answer:1,explain:"Giáo trình trình bày tư bản tài chính là kết quả hợp nhất giữa tư bản ngân hàng của một số ngân hàng độc quyền lớn nhất với tư bản của các liên minh độc quyền công nghiệp."},
+      {chapter:"CHƯƠNG 4 · CẠNH TRANH VÀ ĐỘC QUYỀN",question:"Độc quyền xuất hiện thì cạnh tranh trong nền kinh tế thị trường sẽ như thế nào?",options:["Bị xóa bỏ hoàn toàn.","Chỉ còn cạnh tranh giữa những doanh nghiệp nhỏ.","Vẫn tồn tại, đồng thời trở nên đa dạng và gay gắt hơn.","Chỉ còn tồn tại trong lĩnh vực tiêu dùng."],answer:2,explain:"Độc quyền sinh ra từ cạnh tranh tự do nhưng không thủ tiêu cạnh tranh; trái lại, nó làm cạnh tranh trở nên đa dạng và gay gắt hơn."},
+      {chapter:"CHƯƠNG 4 · ĐỘC QUYỀN NHÀ NƯỚC",question:"Theo nội dung giáo trình, độc quyền nhà nước trong chủ nghĩa tư bản hình thành trên cơ sở nào?",options:["Sự kết hợp giữa độc quyền tư nhân, độc quyền nhóm và sức mạnh kinh tế của nhà nước.","Việc nhà nước sở hữu toàn bộ doanh nghiệp trong nền kinh tế.","Việc loại bỏ mọi quan hệ giữa doanh nghiệp và cơ quan quản lý.","Sự thay thế hoàn toàn thị trường bằng trao đổi hiện vật."],answer:0,explain:"Giáo trình mô tả độc quyền nhà nước trên cơ sở cộng sinh giữa độc quyền tư nhân, độc quyền nhóm và sức mạnh kinh tế của nhà nước."},
+      {chapter:"CHƯƠNG 4 · TÁC ĐỘNG CỦA ĐỘC QUYỀN",question:"Nhận định nào phản ánh đầy đủ hơn tác động của độc quyền theo giáo trình?",options:["Độc quyền chỉ có tác động tích cực vì tập trung được vốn.","Độc quyền chỉ có tác động tiêu cực và không tạo ra khả năng đổi mới.","Độc quyền luôn làm tăng cạnh tranh bình đẳng cho mọi doanh nghiệp.","Độc quyền có thể tập trung nguồn lực cho nghiên cứu, nhưng lợi ích độc quyền cũng có thể kìm hãm tiến bộ kỹ thuật và làm tăng phân hóa."],answer:3,explain:"Giáo trình phân tích cả tác động tích cực và tiêu cực: tập trung nguồn lực có thể hỗ trợ nghiên cứu, nhưng động cơ bảo vệ vị thế độc quyền có thể hạn chế đổi mới và làm tăng phân hóa."},
+      {chapter:"LIÊN HỆ TÌNH HUỐNG · 2008",question:"Trong câu chuyện, ngân hàng được cứu trợ trong khi người lao động mất việc và mất nhà. Vấn đề kinh tế – xã hội nào cần được đặt ra?",options:["Chỉ cần xem xét lợi nhuận của ngân hàng, không cần quan tâm nhóm khác.","Cần xem xét quan hệ lợi ích, ai được hỗ trợ và ai phải gánh chịu chi phí/rủi ro.","Khủng hoảng chỉ là vấn đề cá nhân của người vay.","Nhà nước không có vai trò nào trong điều tiết kinh tế."],answer:1,explain:"Đây là câu hỏi vận dụng tình huống của trò chơi vào nội dung về độc quyền nhà nước và quan hệ lợi ích. Cách diễn giải này là liên hệ của game, không phải định nghĩa nguyên văn trong giáo trình."}
+    ]
+  },
+  2:{
+    title:"Thử thách · Lao động trong kỷ nguyên AI",
+    duration:"03 PHÚT",
+    description:"Tập trung vào máy móc, năng suất, người lao động bị thay thế, quan hệ sở hữu và cách thích ứng với Cách mạng công nghiệp lần thứ tư.",
+    questions:[
+      {chapter:"CHƯƠNG 3 · GIÁ TRỊ THẶNG DƯ TƯƠNG ĐỐI",question:"Trong phân tích của giáo trình, tăng năng suất lao động ở các ngành sản xuất tư liệu sinh hoạt có thể tác động thế nào đến giá trị thặng dư?",options:["Làm mất hoàn toàn thời gian lao động thặng dư.","Làm ngày lao động tự động tăng lên vô hạn.","Giúp giảm giá trị sức lao động, rút ngắn thời gian lao động tất yếu và tạo cơ sở tăng giá trị thặng dư tương đối.","Khiến hàng hóa sức lao động không còn là hàng hóa."],answer:2,explain:"Tăng năng suất ở các ngành sản xuất tư liệu sinh hoạt có thể làm giảm giá trị những tư liệu cần thiết để tái sản xuất sức lao động, từ đó rút ngắn thời gian lao động tất yếu."},
+      {chapter:"CHƯƠNG 3 · TÍCH LŨY TƯ BẢN",question:"Theo giáo trình, xu hướng gia tăng cấu tạo hữu cơ của tư bản gắn với quá trình nào?",options:["Tích lũy tư bản và sự phát triển của cấu tạo kỹ thuật tư bản.","Việc loại bỏ máy móc khỏi sản xuất.","Sự giảm liên tục của quy mô tư bản ứng trước.","Việc chuyển toàn bộ lợi nhuận thành tiền công."],answer:0,explain:"Giáo trình nêu tích lũy tư bản không ngừng làm tăng cấu tạo hữu cơ của tư bản, gắn với xu hướng tăng lên của cấu tạo kỹ thuật."},
+      {chapter:"CHƯƠNG 6 · CÁCH MẠNG CÔNG NGHIỆP LẦN THỨ TƯ",question:"Một hướng thích ứng được giáo trình nhấn mạnh trong bối cảnh Cách mạng công nghiệp lần thứ tư là gì?",options:["Hạn chế nghiên cứu và đổi mới sáng tạo.","Chỉ nhập khẩu sản phẩm hoàn chỉnh, không phát triển năng lực trong nước.","Tách trường đại học và viện nghiên cứu khỏi hoạt động đổi mới.","Hoàn thiện thể chế, xây dựng nền kinh tế dựa trên đổi mới sáng tạo và đẩy mạnh ứng dụng thành tựu công nghệ."],answer:3,explain:"Chương 6 nhấn mạnh hoàn thiện thể chế, xây dựng nền kinh tế dựa trên đổi mới sáng tạo và ứng dụng thành tựu của Cách mạng công nghiệp lần thứ tư vào sản xuất, kinh doanh, dịch vụ và đời sống."},
+      {chapter:"CHƯƠNG 6 · NGUỒN LỰC CON NGƯỜI",question:"Để thích ứng với Cách mạng công nghiệp lần thứ tư, giáo trình đề cập việc tăng cường nguồn lực nào cho đổi mới sáng tạo?",options:["Chỉ tăng vốn đầu tư vào quảng cáo.","Nguồn vốn con người, đồng thời thúc đẩy liên kết đổi mới sáng tạo.","Chỉ tăng nguồn tài nguyên thiên nhiên.","Giảm vai trò của trường đại học và viện nghiên cứu."],answer:1,explain:"Giáo trình nêu cần tăng nguồn vốn con người cho đổi mới sáng tạo, thúc đẩy liên kết và phát huy vai trò của trường đại học, viện, trung tâm nghiên cứu."},
+      {chapter:"LIÊN HỆ TÌNH HUỐNG · SỞ HỮU DỮ LIỆU",question:"Trong phương án hợp tác xã dữ liệu của game, câu hỏi kinh tế chính trị nào được đặt ra trực tiếp nhất?",options:["Dữ liệu có thể tồn tại mà không cần lao động.","Công nghệ tự động quyết định cách phân phối lợi ích.","Ai sở hữu công cụ và dữ liệu, ai tham gia tạo ra giá trị và lợi ích được phân phối như thế nào?","Năng suất tăng đồng nghĩa mọi người luôn nhận thu nhập bằng nhau."],answer:2,explain:"Đây là câu hỏi liên hệ mà kịch bản AI đặt ra về quan hệ sở hữu, tổ chức quản lý và phân phối lợi ích. Hợp tác xã dữ liệu là phương án giả định trong game, không phải một kết luận được giáo trình nêu trực tiếp."}
+    ]
+  },
+  4:{
+    title:"Thử thách tổng hợp · Bốn kiếp người",
+    duration:"04 PHÚT",
+    description:"Bài kiểm tra tổng hợp các chủ đề xuyên suốt bốn chương: giá trị thặng dư, tích lũy, độc quyền, phân phối và công nghiệp hóa – hiện đại hóa.",
+    questions:[
+      {chapter:"CHƯƠNG 3 · HÀNG HÓA SỨC LAO ĐỘNG",question:"Điểm đặc biệt trong giá trị sử dụng của hàng hóa sức lao động là gì?",options:["Không tạo ra giá trị mới.","Có thể tạo ra giá trị mới lớn hơn giá trị của bản thân nó.","Chỉ chuyển nguyên giá trị vào sản phẩm.","Luôn tạo ra giá trị đúng bằng tiền công."],answer:1,explain:"Sức lao động là hàng hóa đặc biệt vì trong quá trình sử dụng, nó có thể tạo ra lượng giá trị mới lớn hơn giá trị của bản thân hàng hóa sức lao động."},
+      {chapter:"CHƯƠNG 3 · TÍCH LŨY TƯ BẢN",question:"Đâu là hệ quả được giáo trình nêu của quá trình tích lũy tư bản?",options:["Làm giảm cấu tạo hữu cơ của tư bản trong mọi trường hợp.","Xóa bỏ sự khác biệt về thu nhập giữa nhà tư bản và người lao động.","Làm tăng cấu tạo hữu cơ, thúc đẩy tích tụ và tập trung tư bản.","Làm tư bản xã hội ngừng mở rộng."],answer:2,explain:"Tóm tắt Chương 3 nêu tích lũy tư bản làm tăng cấu tạo hữu cơ, thúc đẩy tích tụ và tập trung tư bản, đồng thời có thể làm phân hóa thu nhập."},
+      {chapter:"CHƯƠNG 4 · TƯ BẢN TÀI CHÍNH",question:"Tư bản tài chính là kết quả hợp nhất giữa những bộ phận nào?",options:["Tư bản ngân hàng độc quyền lớn và tư bản của các liên minh độc quyền công nghiệp.","Tư bản nông nghiệp và tư bản hộ gia đình.","Tư bản thương nghiệp nhỏ và tiền tiết kiệm cá nhân.","Tư bản nhà nước và mọi loại hình hợp tác xã."],answer:0,explain:"Giáo trình xác định tư bản tài chính hình thành từ sự hợp nhất giữa tư bản ngân hàng của một số ngân hàng độc quyền lớn và tư bản của các liên minh độc quyền công nghiệp."},
+      {chapter:"CHƯƠNG 5 · QUAN HỆ PHÂN PHỐI",question:"Trong kinh tế thị trường định hướng xã hội chủ nghĩa ở Việt Nam, kết quả đầu ra chủ yếu được phân phối theo cơ sở nào?",options:["Chia đều tuyệt đối cho mọi chủ thể.","Chỉ căn cứ vào số vốn góp ban đầu.","Chỉ căn cứ vào quyết định riêng của từng doanh nghiệp.","Theo kết quả lao động, hiệu quả kinh tế, mức đóng góp vốn và các nguồn lực khác, đồng thời thông qua an sinh và phúc lợi xã hội."],answer:3,explain:"Giáo trình trình bày phân phối theo kết quả lao động, hiệu quả kinh tế, mức đóng góp vốn và các nguồn lực khác, đồng thời thông qua hệ thống an sinh xã hội và phúc lợi xã hội."},
+      {chapter:"CHƯƠNG 6 · CÔNG NGHIỆP HÓA, HIỆN ĐẠI HÓA",question:"Một định hướng để thích ứng với Cách mạng công nghiệp lần thứ tư được giáo trình nhấn mạnh là gì?",options:["Hạn chế đổi mới sáng tạo.","Hoàn thiện thể chế, thúc đẩy đổi mới sáng tạo và ứng dụng thành tựu công nghệ.","Tách doanh nghiệp khỏi hoạt động nghiên cứu.","Chỉ tập trung nhập khẩu thành phẩm."],answer:1,explain:"Chương 6 nhấn mạnh hoàn thiện thể chế, xây dựng nền kinh tế dựa trên đổi mới sáng tạo và đẩy mạnh ứng dụng thành tựu công nghệ."},
+      {chapter:"CHƯƠNG 6 · HỘI NHẬP KINH TẾ QUỐC TẾ",question:"Một yêu cầu được đặt ra khi Việt Nam hội nhập kinh tế quốc tế là gì?",options:["Từ bỏ hoàn toàn năng lực tự chủ của nền kinh tế.","Chỉ ưu tiên trao đổi với một đối tác duy nhất.","Xây dựng nền kinh tế độc lập, tự chủ trong quá trình hội nhập.","Ngừng tham gia các quan hệ kinh tế quốc tế."],answer:2,explain:"Chương 6 trình bày hội nhập kinh tế quốc tế gắn với yêu cầu xây dựng nền kinh tế Việt Nam độc lập, tự chủ."}
+    ]
+  }
+};
+let activePracticeMode=4,activePractice=PRACTICE_BANKS[4].questions,quizAnswers=[],quizGraded=false;
+function resolvePracticeMode(data){
+  const savedMode=Number(data&&data.runMode);
+  if(PRACTICE_BANKS[savedMode])return savedMode;
+  const name=(data&&data.mode||"").toLowerCase();
+  if(name.includes("đối lập"))return 3;
+  if(name.includes("chính trị"))return 5;
+  if(name.includes("công nghệ"))return 2;
+  return 4;
+}
+function refreshQuizProgress(){
+  const count=quizAnswers.filter(x=>x!==null).length,total=activePractice.length;
+  $("#quiz-progress-label").textContent=`${count}/${total} câu đã trả lời`;
+  $("#quiz-progress").style.width=(count/total*100)+"%";
+  $("#quiz-submit").disabled=count===0||quizGraded;
+}
+function renderPractice(modeKey=activePracticeMode){
+  activePracticeMode=PRACTICE_BANKS[Number(modeKey)]?Number(modeKey):4;
+  const config=PRACTICE_BANKS[activePracticeMode];
+  activePractice=config.questions;
+  quizAnswers=Array(activePractice.length).fill(null);quizGraded=false;
+  $("#practice-title").textContent=config.title;
+  document.querySelector(".practice-count").textContent=`${activePractice.length} CÂU · ${config.duration}`;
+  $(".practice-desc").textContent=config.description;
+  $("#quiz-result").textContent="Chưa chấm điểm";
+  $("#quiz-submit").textContent="Chấm bài";
+  $("#quiz-list").innerHTML=activePractice.map((q,i)=>`<article class="quiz-q" data-question="${i}"><div class="quiz-meta"><span>${q.chapter}</span><span>${String(i+1).padStart(2,"0")} / ${String(activePractice.length).padStart(2,"0")}</span></div><h4>${q.question}</h4><div class="quiz-options">${q.options.map((option,j)=>`<button type="button" class="quiz-option" data-q="${i}" data-option="${j}" aria-pressed="false"><span class="opt-key">${"ABCD"[j]}</span><span>${option}</span></button>`).join("")}</div><p class="quiz-feedback" id="quiz-feedback-${i}" aria-live="polite"></p></article>`).join("");
+  refreshQuizProgress();
+}
+$("#quiz-list").addEventListener("click",e=>{
+  const button=e.target.closest(".quiz-option");if(!button||quizGraded)return;
+  const q=Number(button.dataset.q),option=Number(button.dataset.option);quizAnswers[q]=option;
+  document.querySelectorAll(`.quiz-option[data-q="${q}"]`).forEach(b=>{b.classList.toggle("selected",Number(b.dataset.option)===option);b.setAttribute("aria-pressed",Number(b.dataset.option)===option?"true":"false")});
+  refreshQuizProgress();
+});
+$("#quiz-submit").onclick=()=>{
+  if(quizGraded||quizAnswers.every(x=>x===null))return;
+  quizGraded=true;let score=0;
+  activePractice.forEach((q,i)=>{
+    const correct=quizAnswers[i]===q.answer;if(correct)score++;
+    document.querySelectorAll(`.quiz-option[data-q="${i}"]`).forEach(b=>{
+      const option=Number(b.dataset.option);b.disabled=true;
+      if(option===q.answer)b.classList.add("is-correct");
+      if(quizAnswers[i]===option&&option!==q.answer)b.classList.add("is-wrong");
+    });
+    const feedback=$("#quiz-feedback-"+i);
+    feedback.textContent=quizAnswers[i]===null?`Chưa trả lời. Đáp án đúng: ${"ABCD"[q.answer]}. ${q.explain}`:correct?`Chính xác. ${q.explain}`:`Chưa chính xác. Đáp án đúng: ${"ABCD"[q.answer]}. ${q.explain}`;
+  });
+  $("#quiz-result").textContent=`KẾT QUẢ: ${score}/${activePractice.length}`;
+  $("#quiz-submit").textContent="Đã chấm bài";refreshQuizProgress();
+};
+$("#quiz-reset").onclick=()=>renderPractice(activePracticeMode);
+renderPractice(4);
+const SC=[
+`<svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0a0c"/><stop offset="1" stop-color="#7f1d1d"/></linearGradient></defs><rect width="800" height="200" fill="url(#g0)"/><circle cx="620" cy="150" r="70" fill="#ef4444" opacity=".25"/><g fill="#050507"><rect x="60" y="90" width="26" height="110"/><rect x="150" y="60" width="30" height="140"/><rect x="260" y="100" width="24" height="100"/><path d="M330 150V110l40-20v20l40-20v20l40-20v60z"/><path d="M520 150V95h120v55z"/><rect x="0" y="150" width="800" height="50"/></g><g fill="#9ca3af" opacity=".5"><circle class="sm" cx="73" cy="80" r="14"/><circle class="sm s2" cx="165" cy="48" r="16"/><circle class="sm s3" cx="272" cy="90" r="12"/></g><g fill="#fbbf24"><rect x="540" y="115" width="10" height="14"/><rect x="570" y="115" width="10" height="14"/><rect x="600" y="115" width="10" height="14"/></g></svg>`,
+`<svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06101c"/><stop offset="1" stop-color="#0c2d4a"/></linearGradient></defs><rect width="800" height="200" fill="url(#g1)"/><g fill="#04060a"><rect x="40" y="70" width="70" height="130"/><rect x="130" y="30" width="60" height="170"/><rect x="215" y="85" width="80" height="115"/><rect x="330" y="50" width="55" height="150"/><rect x="420" y="90" width="90" height="110"/><rect x="540" y="20" width="60" height="180"/><rect x="630" y="75" width="80" height="125"/></g><g fill="#38bdf8" opacity=".5"><rect x="55" y="90" width="8" height="8"/><rect x="80" y="110" width="8" height="8"/><rect x="145" y="55" width="8" height="8"/><rect x="165" y="95" width="8" height="8"/><rect x="235" y="110" width="8" height="8"/><rect x="345" y="75" width="8" height="8"/><rect x="450" y="115" width="8" height="8"/><rect x="560" y="50" width="8" height="8"/><rect x="580" y="100" width="8" height="8"/><rect x="650" y="100" width="8" height="8"/></g><polyline class="ln" points="0,175 120,150 220,158 330,112 430,125 540,62 650,72 800,22" fill="none" stroke="#38bdf8" stroke-width="3"/></svg>`,
+`<svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0b12"/><stop offset="1" stop-color="#2a0d12"/></linearGradient></defs><rect width="800" height="200" fill="url(#g2)"/><g fill="#050507"><path d="M250 82l150-48 150 48z"/><rect x="258" y="86" width="284" height="8"/><rect x="272" y="98" width="14" height="66"/><rect x="310" y="98" width="14" height="66"/><rect x="348" y="98" width="14" height="66"/><rect x="386" y="98" width="14" height="66"/><rect x="424" y="98" width="14" height="66"/><rect x="462" y="98" width="14" height="66"/><rect x="500" y="98" width="14" height="66"/><rect x="246" y="164" width="308" height="36"/></g><polyline class="ln" points="0,30 150,42 260,38 380,80 520,120 660,150 800,188" fill="none" stroke="#ef4444" stroke-width="3"/></svg>`,
+`<svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02060f"/><stop offset="1" stop-color="#082038"/></linearGradient></defs><rect width="800" height="200" fill="url(#g3)"/><path stroke="#38bdf8" stroke-opacity=".3" fill="none" d="M120 50L300 30M120 50L300 80M120 50L300 130M120 100L300 30M120 100L300 80M120 100L300 130M120 100L300 175M120 150L300 80M120 150L300 130M120 150L300 175M300 30L480 60M300 80L480 60M300 80L480 110M300 130L480 110M300 130L480 160M300 175L480 160M480 60L600 100M480 110L600 100M480 160L600 100"/><g fill="#38bdf8"><circle class="pl" cx="120" cy="50" r="6"/><circle class="pl p2" cx="120" cy="100" r="6"/><circle class="pl" cx="120" cy="150" r="6"/><circle class="pl p2" cx="300" cy="30" r="6"/><circle class="pl" cx="300" cy="80" r="6"/><circle class="pl p2" cx="300" cy="130" r="6"/><circle class="pl" cx="300" cy="175" r="6"/><circle class="pl p2" cx="480" cy="60" r="6"/><circle class="pl" cx="480" cy="110" r="6"/><circle class="pl p2" cx="480" cy="160" r="6"/></g><circle class="pl" cx="600" cy="100" r="10" fill="#ef4444"/><g fill="#04060a" stroke="#1e3a52"><rect x="660" y="40" width="44" height="160"/><rect x="714" y="64" width="44" height="136"/></g><g fill="#38bdf8"><rect x="670" y="55" width="24" height="3"/><rect x="670" y="75" width="24" height="3"/><rect x="670" y="95" width="24" height="3"/><rect x="724" y="80" width="24" height="3"/><rect x="724" y="100" width="24" height="3"/></g></svg>`,
+`<svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#120d06"/><stop offset="1" stop-color="#5b3d0a"/></linearGradient></defs><rect width="800" height="200" fill="url(#g4)"/><g fill="#050507"><rect x="380" y="70" width="300" height="130"/><rect x="420" y="30" width="26" height="45"/><path d="M110 160V110l40-18v18l40-18v18l40-18v68z"/><rect x="0" y="160" width="800" height="40"/></g><rect x="500" y="90" width="44" height="30" fill="#fbbf24" opacity=".85"/><g fill="#fbbf24"><circle cx="150" cy="176" r="10"/><circle cx="174" cy="178" r="10"/><circle cx="162" cy="164" r="10"/></g><g fill="#9ca3af" opacity=".5"><circle class="sm" cx="433" cy="22" r="14"/><circle class="sm s2" cx="440" cy="10" r="12"/></g></svg>`,
+`<svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0f16"/><stop offset="1" stop-color="#1f2a38"/></linearGradient></defs><rect width="800" height="200" fill="url(#g5)"/><g fill="#050507"><path d="M60 150V90l50 25V90l50 25V90l50 25v35z"/><path d="M430 150v-40l40-30 40 30v40z"/><path d="M540 150v-34l34-26 34 26v34z"/><path d="M650 150v-40l40-30 40 30v40z"/><rect x="0" y="150" width="800" height="50"/></g><g fill="#fbbf24" opacity=".7"><rect x="452" y="118" width="14" height="14"/><rect x="560" y="122" width="12" height="12"/></g><rect x="672" y="118" width="14" height="14" fill="#ef4444"/><polyline class="ln" points="0,40 140,50 300,45 460,70 620,110 800,148" fill="none" stroke="#ef4444" stroke-width="3"/></svg>`,
+`<svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050b14"/><stop offset="1" stop-color="#10243a"/></linearGradient></defs><rect width="800" height="200" fill="url(#g6)"/><g fill="#38bdf8"><circle class="pl" cx="140" cy="36" r="4"/><circle class="pl p2" cx="330" cy="28" r="4"/><circle class="pl" cx="520" cy="40" r="4"/><circle class="pl p2" cx="700" cy="30" r="4"/></g><g fill="#04060a"><rect x="60" y="120" width="180" height="12"/><rect x="300" y="120" width="180" height="12"/><rect x="540" y="120" width="180" height="12"/><rect x="0" y="170" width="800" height="30"/></g><g fill="#0b1f33" stroke="#38bdf8" stroke-opacity=".5"><rect x="90" y="78" width="60" height="40"/><rect x="170" y="78" width="60" height="40"/><rect x="330" y="78" width="60" height="40"/><rect x="410" y="78" width="60" height="40"/><rect x="570" y="78" width="60" height="40"/><rect x="650" y="78" width="60" height="40"/></g><rect class="pl" x="588" y="90" width="24" height="16" fill="#ef4444"/><path d="M588 90l12 9 12-9" stroke="#fff" stroke-width="1.5" fill="none"/></svg>`];
+const MT=[["MANCHESTER","1847"],["PHỐ WALL","1910"],["WASHINGTON","2008"],["KỶ NGUYÊN DỮ LIỆU","HIỆN NAY"],["MANCHESTER","1847"],["OHIO","2008"],["VĂN PHÒNG WHITMORE TECH","HIỆN NAY"]];
+function scene(){const e=$("#scene");e.innerHTML=SC[li]+`<div class="sct"><small>${MT[li][0]} · ${MT[li][1]}</small><b>Kiếp ${pos+1}: ${L[li].n}</b></div>`;sw(e)}
+$("#lives4").innerHTML=L.map((l,i)=>`<div class="lc"><div class="th">${portraitSvg(i,"roster")}</div><div class="t"><small>${CHARACTER_META[i].role}</small><b>${l.n}</b></div></div>`).join("");
+</script>
+</body>
+</html>
